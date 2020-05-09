@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Hexo</title>
+  <title>XbsNotes</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
+<meta property="og:title" content="XbsNotes">
 <meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="XbsNotes">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
-    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="XbsNotes" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -152,49 +152,31 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-blog001" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-用hexo搭建个人博客" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/08/blog001/">用hexo和git搭建博客</a>
+      <a class="article-title" href="/2020/05/09/%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">用hexo搭建个人博客</a>
     </h1>
   
 
         
-        <a href="/2020/05/08/blog001/" class="archive-article-date">
-  	<time datetime="2020-05-08T09:11:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-08</time>
+        <a href="/2020/05/09/%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" class="archive-article-date">
+  	<time datetime="2020-05-09T08:50:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-09</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>​    安装git：<a href="https://git-scm.com" target="_blank" rel="noopener">https://git-scm.com</a><br>​    安装nodejs：<a href="https://nodejs.org/en/" target="_blank" rel="noopener">https://nodejs.org/en/</a></p>
-<h2 id="2-安装hexo"><a href="#2-安装hexo" class="headerlink" title="2.安装hexo"></a>2.安装hexo</h2><hr>
-<ul>
-<li><p>以管理员身份运行：sudo su</p>
-</li>
-<li><p>可以验证是否装好git和nodejs：git -version；node -v；npm -v</p>
-</li>
-<li><p>在国内建议先安装淘宝镜像源 cnpm再进行安装hexo：</p>
-<p>输入：npm install -g cnpm –registry=<a href="https://registry.npm.taobao.org；安装完后查看是否安装成功：">https://registry.npm.taobao.org；安装完后查看是否安装成功：</a> cnpm -v：</p>
-<img src="/Users/chris/Library/Application Support/typora-user-images/截屏2020-05-09 下午3.05.52.png" alt="截屏2020-05-09 下午3.05.52"  />
-</li>
-<li><p>利用cnpm安装hexo博客 ：cnpm install -g hexo-cli</p>
-<p>安装成功可查看hexo信息：hexo -v:</p>
-<img src="/Users/chris/Library/Application Support/typora-user-images/截屏2020-05-09 下午3.07.51.png" alt="截屏2020-05-09 下午3.07.51" style="zoom: 33%;" />
-</li>
-<li><p>可以新建一个 文件夹作为存放目录：mkdir blog</p>
-<p>进到目录中：cd blog/ (注意操作都在当前文件夹下进行操作)</p>
-</li>
-<li><p>至此，hexo已经为你 生成了基础博客框架，启动hexo输入 :hexo s</p>
-<p>![截屏2020-05-09 下午3.10.22](/Users/chris/Library/Application Support/typora-user-images/截屏2020-05-09 下午3.10.22.png)</p>
-<p>在浏览器输入地址<a href="http://localhost:4000可以看到基本框架已经生成。">http://localhost:4000可以看到基本框架已经生成。</a></p>
-</li>
-</ul>
+        <h2 id="1-准备工作"><a href="#1-准备工作" class="headerlink" title="1.准备工作"></a>1.准备工作</h2><p><font size="4">- 安装git：<a href="https://git-scm.com" target="_blank" rel="noopener">https://git-scm.com</a></font><br><font size="4">- 安装nodejs：<a href="https://nodejs.org/en/" target="_blank" rel="noopener">https://nodejs.org/en/</a></font></p>
+<h2 id="2-安装hexo"><a href="#2-安装hexo" class="headerlink" title="2.安装hexo"></a>2.安装hexo</h2><p><font size="4">1. 以管理员身份运行：sudo su</font><br><font size="4">2. 可以验证是否装好git和nodejs输入：git -version；node -v；npm -v；查看对应的版本是否一致</font><br><font size="4">3. 在国内建议先安装淘宝镜像源 cnpm再进行安装hexo：</font><br><font size="4">输入：npm install -g cnpm –registry=<a href="https://registry.npm.taobao.org" target="_blank" rel="noopener">https://registry.npm.taobao.org</a>; 安装完后查    看是否安装成功： cnpm -v：</font><br><img src="/2020/05/09/%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/001.png" alt="001"><br>    <font size="4">利用cnpm安装hexo博客 ：cnpm install -g hexo-cli</font><br>    <font size="4">安装成功可查看hexo信息：hexo -v:</font><br>    <img src="/2020/05/09/%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/002.png" width="33%" height="33%"></p>
+<p><font size="4">4. 可以新建一个 文件夹作为存放目录：mkdir blog，进到目录中：cd blog/ (注意操        作都在当前文件夹下进行操作)</font></p>
+<p><font size="4">5. 至此，hexo已经为你生成了基础博客框架，启动hexo输入 :hexo s</font><br><img src="/2020/05/09/%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/003.png" width="80%" height="80%"></p>
+<p><font size="4">6. 在浏览器输入地址<a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a> 可以看到基本框架已经生成。</font></p>
 
       
 
@@ -207,7 +189,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/08/blog001/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/05/09/%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">展开全文 >></a>
         </p>
       
 
