@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>XbsNotes</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2020-05-11T07:26:38.552Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>XbsNotes</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java 注解</title>
+    <link href="http://yoursite.com/2020/05/10/Java-%E6%B3%A8%E8%A7%A3/"/>
+    <id>http://yoursite.com/2020/05/10/Java-%E6%B3%A8%E8%A7%A3/</id>
+    <published>2020-05-10T03:56:57.000Z</published>
+    <updated>2020-05-11T07:26:38.552Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Annotation的作用"><a href="#Annotation的作用" class="headerlink" title="Annotation的作用"></a>Annotation的作用</h3><p>1.不是程序本身，可以对程序作出解释。(这一点，跟注释没什么区别)<br>2.可以被其他程序(比如：编译器，其他类(通过反射))读取。(注解信息处理流程，是注解和注释的重大区别如果没有注解信息处理流程，则注解毫无意义) </p><a id="more"></a> <h3 id="Annotation的格式"><a href="#Annotation的格式" class="headerlink" title="Annotation的格式"></a>Annotation的格式</h3><p>注解是以“@注释名”在代码中存在的，还可以添加一些参数值，例如：<br>@SuppressWarnings(value=”unchecked”)。(抑制警告)</p><h3 id="Annotation在哪里使用"><a href="#Annotation在哪里使用" class="headerlink" title="Annotation在哪里使用"></a>Annotation在哪里使用</h3><p>可以附加在package, class, method, field等上面，相当于给它们添加了额外的辅助信息，我们可以通过反射机制编程实现对这些元数据的访问。</p><h3 id="自定义注解"><a href="#自定义注解" class="headerlink" title="自定义注解"></a>自定义注解</h3><p>格式：public @interface 注解名 {定义体}<br>1.方法的名称就是参数的名称;<br>2.返回值类型就是参数的类型（返回值类型只能是基本类型、Class、String、enum）;<br>3.可以通过default来声明参数的默认值<a href="注解元素必须要有值。我们定义注解元素时，经常使用空字符串、0作为默认值。也经常使用负数(比如：-1)表示不存在的含义">^1</a>;<br>4.如果只有一个参数成员，一般参数名为value;</p><h3 id="元注解"><a href="#元注解" class="headerlink" title="元注解"></a>元注解</h3><p>元注解的作用就是负责注解其他注解。 Java定义了4个标准的meta-annotation类型，它们被用来提供对其它 annotation类型作说明。<br>1.@Target：用于描述注解的使用范围（即:被描述的注解可以用在什么地方）<br>ElementType.TYPE；ElementType.FIELD…<br>2.@Retention：表示需要在什么级别保存该注释信息，用于描述注解的生命周期<br>SOURCE；CLASS；RUNTIME(可被反射机制读取)<br>3.@Documented<br>4.@Inherited</p><h3 id="通过反射读取注解的流程："><a href="#通过反射读取注解的流程：" class="headerlink" title="通过反射读取注解的流程："></a>通过反射读取注解的流程：</h3><p>自定义类注解：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Target</span>(value = &#123;ElementType.TYPE&#125;)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> test01Table &#123;</span><br><span class="line">    <span class="function">String <span class="title">value</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>自定义属性注解：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Target</span>(value = &#123;ElementType.FIELD&#125;)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> test01Field &#123;</span><br><span class="line">    <span class="function">String <span class="title">columnName</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function">String <span class="title">type</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">length</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>在test01中加入注解：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@test</span>01Table(<span class="string">"tb_member"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">test01</span> </span>&#123;</span><br><span class="line">    <span class="meta">@test</span>01Field(columnName = <span class="string">"id"</span>, type = <span class="string">"int"</span>, length = <span class="number">10</span>)</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line">    <span class="meta">@test</span>01Field(columnName = <span class="string">"sname"</span>, type = <span class="string">"varchar"</span>, length = <span class="number">10</span>)</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="meta">@test</span>01Field(columnName = <span class="string">"age"</span>, type = <span class="string">"int"</span>, length = <span class="number">3</span>)</span><br><span class="line">    <span class="keyword">private</span>  <span class="keyword">int</span> age;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>读取test01中的注解：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 通过反射读取自定义注解</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ReadAnnotation</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Class clazz = Class.forName(<span class="string">"com.sgg.annotation.test01"</span>);</span><br><span class="line">            <span class="comment">//获得类的有效注解</span></span><br><span class="line">            Annotation[] annotations = clazz.getAnnotations();</span><br><span class="line">            <span class="keyword">for</span>(Annotation a : annotations)&#123;</span><br><span class="line">                System.out.println(a);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">//获得类的制定注解</span></span><br><span class="line">            test01Table tt = (test01Table)clazz.getAnnotation(test01Table<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">            System.out.println(tt.value());</span><br><span class="line"></span><br><span class="line">            <span class="comment">//获得类的属性的对应注解</span></span><br><span class="line">            Field f = clazz.getDeclaredField(<span class="string">"id"</span>);</span><br><span class="line">            test01Field tf = (test01Field)f.getAnnotation(test01Field<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">            System.out.println(tf.columnName() +<span class="string">"--"</span>+ tf.type() +<span class="string">"--"</span>+ tf.length());</span><br><span class="line"></span><br><span class="line">            <span class="comment">//接下来可以利用注解信息写出DDL语句，完成相应的数据库操作</span></span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Annotation的作用&quot;&gt;&lt;a href=&quot;#Annotation的作用&quot; class=&quot;headerlink&quot; title=&quot;Annotation的作用&quot;&gt;&lt;/a&gt;Annotation的作用&lt;/h3&gt;&lt;p&gt;1.不是程序本身，可以对程序作出解释。(这一点，跟注释没什么区别)&lt;br&gt;2.可以被其他程序(比如：编译器，其他类(通过反射))读取。(注解信息处理流程，是注解和注释的重大区别如果没有注解信息处理流程，则注解毫无意义) &lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Java" scheme="http://yoursite.com/categories/Java/"/>
+    
+    
+      <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
+    
+      <category term="annotation" scheme="http://yoursite.com/tags/annotation/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>用hexo搭建个人博客</title>
+    <link href="http://yoursite.com/2020/05/09/%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
+    <id>http://yoursite.com/2020/05/09/%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</id>
+    <published>2020-05-09T08:50:49.000Z</published>
+    <updated>2020-05-11T07:26:20.442Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>安装git：<a href="https://git-scm.com" target="_blank" rel="noopener">https://git-scm.com</a><br>安装nodejs：<a href="https://nodejs.org/en/" target="_blank" rel="noopener">https://nodejs.org/en/</a></p><a id="more"></a><h3 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h3><p>1.以管理员身份运行：sudo su<br>2.可以验证是否装好git和nodejs输入：git -version；node -v；npm -v；查看对应的版本是否一致<br>3.在国内建议先安装淘宝镜像源 cnpm再进行安装hexo：<br>输入：npm install -g cnpm –registry=<a href="https://registry.npm.taobao.org" target="_blank" rel="noopener">https://registry.npm.taobao.org</a>; 安装完后查    看是否安装成功： cnpm -v：<br><img src="/2020/05/09/%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/001.png" alt="001"><br>    利用cnpm安装hexo博客 ：cnpm install -g hexo-cli<br>    安装成功可查看hexo信息：hexo -v:<br>    <img src="/2020/05/09/%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/002.png" width="33%" height="33%"><br>4.可以新建一个 文件夹作为存放目录：mkdir blog，进到目录中：cd blog/ (注意操作都在当前文件夹下进行操作)<br>5.至此，hexo已经为你生成了基础博客框架，启动hexo输入 :hexo s<br><img src="/2020/05/09/%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/003.png" width="80%" height="80%"><br>6.在浏览器输入地址<a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a> 可以看到基本框架已经生成。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;准备工作&quot;&gt;&lt;a href=&quot;#准备工作&quot; class=&quot;headerlink&quot; title=&quot;准备工作&quot;&gt;&lt;/a&gt;准备工作&lt;/h3&gt;&lt;p&gt;安装git：&lt;a href=&quot;https://git-scm.com&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://git-scm.com&lt;/a&gt;&lt;br&gt;安装nodejs：&lt;a href=&quot;https://nodejs.org/en/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://nodejs.org/en/&lt;/a&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="hexo" scheme="http://yoursite.com/categories/hexo/"/>
+    
+    
+      <category term="git" scheme="http://yoursite.com/tags/git/"/>
+    
+      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
+    
+      <category term="nodejs" scheme="http://yoursite.com/tags/nodejs/"/>
+    
+  </entry>
+  
+</feed>

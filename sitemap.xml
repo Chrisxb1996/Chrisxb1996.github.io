@@ -2,30 +2,44 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite.com/2020/05/09/%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</loc>
+    <loc>http://yoursite.com/Coding/index.html</loc>
     
-    <lastmod>2020-05-10T14:39:53.655Z</lastmod>
+    <lastmod>2020-05-11T07:40:00.273Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2020/05/10/Java-%E6%B3%A8%E8%A7%A3/</loc>
     
-    <lastmod>2020-05-10T14:39:29.376Z</lastmod>
+    <lastmod>2020-05-11T07:26:38.552Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2020/05/09/%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</loc>
+    
+    <lastmod>2020-05-11T07:26:20.442Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/communication/index.html</loc>
+    
+    <lastmod>2020-05-11T06:37:47.847Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/tags/index.html</loc>
     
-    <lastmod>2020-05-10T14:38:17.233Z</lastmod>
+    <lastmod>2020-05-11T04:42:00.966Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/categories/index.html</loc>
     
-    <lastmod>2020-05-10T14:38:07.973Z</lastmod>
+    <lastmod>2020-05-11T04:38:23.316Z</lastmod>
     
   </url>
   
