@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next gemini use-motion" lang="en">
+<html class="theme-next mist use-motion" lang="en">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -119,7 +119,7 @@
 <meta property="og:description" content="Java1.6以后引入动态编译，在做一个浏览器端编写java代码，上传服务器编译和运行的在线评测系统或是服务器动态加载某些类文件进行编译的时候就用到了动态编译：通过JavaCompiler动态编译： 1234567public static int compileFile(String sourceFile)&amp;#123;	&#x2F;&#x2F;动态编译  JavaCompiler compiler &#x3D; ToolPr">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-05-12T07:20:23.000Z">
-<meta property="article:modified_time" content="2020-05-12T10:14:18.830Z">
+<meta property="article:modified_time" content="2020-05-12T14:38:52.052Z">
 <meta property="article:author" content="xNotes">
 <meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
@@ -130,7 +130,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Gemini',
+    scheme: 'Mist',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":10,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -432,14 +432,12 @@
       
         <p>Java1.6以后引入动态编译，在做一个浏览器端编写java代码，上传服务器编译和运行的在线评测<br>系统或是服务器动态加载某些类文件进行编译的时候就用到了动态编译：<br><strong>通过JavaCompiler动态编译：</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">compileFile</span><span class="params">(String sourceFile)</span></span>&#123;</span><br><span class="line">	<span class="comment">//动态编译</span></span><br><span class="line">  JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();</span><br><span class="line">  <span class="keyword">int</span> result = compiler.run(<span class="keyword">null</span>, <span class="keyword">null</span>, <span class="keyword">null</span>,sourceFile);</span><br><span class="line">  System.out.println(result==<span class="number">0</span>?<span class="string">"编译成功"</span>:<span class="string">"编译失败"</span>);</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>• 第一个参数：为java编译器提供参数<br>• 第二个参数：得到 Java 编译器的输出信息<br>• 第三个参数：接收编译器的 错误信息<br>• 第四个参数：可变参数（是一个String数组）能传入一个或多个 Java 源文件<br>• 返回值：0表示编译成功，非0表示编译失败</p>
+<p>• 第一个参数：为java编译器提供参数<br>• 第二个参数：得到 Java 编译器的输出信息</p>
 <a id="more"></a> 
-<p><strong>动态运行编译好的类：</strong></p>
-<ul>
-<li>通过Runtime.getRuntime()运行启动新的进程运行<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Runtime run = Runtime.getRuntime();</span><br><span class="line">Process process = run.exec(<span class="string">"java -cp path HelloWorld"</span>);</span><br></pre></td></tr></table></figure></li>
-<li>通过反射运行编译好的类<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//通过反射运行程序</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">runJavaClassByReflect</span><span class="params">(String dir,String classFile)</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    URL[] urls = <span class="keyword">new</span> URL[] &#123;<span class="keyword">new</span> URL(<span class="string">"file:/"</span>+dir)&#125;;</span><br><span class="line">    URLClassLoader loader = <span class="keyword">new</span> URLClassLoader(urls);</span><br><span class="line">    Class c = loader.loadClass(classFile);</span><br><span class="line">    <span class="comment">//调用加载类的main方法</span></span><br><span class="line">    Method m = c.getMethod(<span class="string">"main"</span>,String[]<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line">		m.invoke(null, (Object)new String[]&#123;&#125;);//反射调用main方法加(object)强制转型</span><br><span class="line">  &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">  	e.printStackTrace();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-
+<p>• 第三个参数：接收编译器的 错误信息<br>• 第四个参数：可变参数（是一个String数组）能传入一个或多个 Java 源文件<br>• 返回值：0表示编译成功，非0表示编译失败<br><strong>动态运行编译好的类：</strong><br>通过Runtime.getRuntime()运行启动新的进程运行</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Runtime run = Runtime.getRuntime();</span><br><span class="line">Process process = run.exec(<span class="string">"java -cp path HelloWorld"</span>);</span><br></pre></td></tr></table></figure>
+<p>通过反射运行编译好的类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//通过反射运行程序</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">runJavaClassByReflect</span><span class="params">(String dir,String classFile)</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    URL[] urls = <span class="keyword">new</span> URL[] &#123;<span class="keyword">new</span> URL(<span class="string">"file:/"</span>+dir)&#125;;</span><br><span class="line">    URLClassLoader loader = <span class="keyword">new</span> URLClassLoader(urls);</span><br><span class="line">    Class c = loader.loadClass(classFile);</span><br><span class="line">    <span class="comment">//调用加载类的main方法</span></span><br><span class="line">    Method m = c.getMethod(<span class="string">"main"</span>,String[]<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line">		m.invoke(null, (Object)new String[]&#123;&#125;);//反射调用main方法加(object)强制转型</span><br><span class="line">  &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">  	e.printStackTrace();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -625,6 +623,12 @@
                   </span>
                 
                   <span class="links-of-author-item">
+                    <a href="2453748021@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
                     <a href="https://www.jianshu.com/u/acca9cf8cd45" target="_blank" title="简书">
                       
                         <i class="fa fa-fw fa-globe"></i>简书</a>
@@ -769,13 +773,6 @@
 
   
   
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
-
-
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
