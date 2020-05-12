@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="en">
+<html class="theme-next mist use-motion" lang="en">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -97,7 +97,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Java," />
 
 
 
@@ -108,16 +108,17 @@
 
 
 
-<meta name="description" content="天线阵列:论文笔记：Statistical Analysis of Array Gain for Cooperative MISO Transmitters without CSI">
-<meta property="og:type" content="website">
-<meta property="og:title" content="communication">
-<meta property="og:url" content="http://yoursite.com/communication/index.html">
-<meta property="og:site_name" content="XbsNotes">
-<meta property="og:description" content="天线阵列:论文笔记：Statistical Analysis of Array Gain for Cooperative MISO Transmitters without CSI">
+<meta name="description" content="Java1.6以后引入动态编译，在做一个浏览器端编写java代码，上传服务器编译和运行的在线评测系统或是服务器动态加载某些类文件进行编译的时候就用到了动态编译：通过JavaCompiler动态编译： 1234567public static int compileFile(String sourceFile)&amp;#123;	&#x2F;&#x2F;动态编译  JavaCompiler compiler &#x3D; ToolPr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java 动态编译">
+<meta property="og:url" content="http://yoursite.com/2020/05/12/Java-%E5%8A%A8%E6%80%81%E7%BC%96%E8%AF%91/index.html">
+<meta property="og:site_name" content="xNotes">
+<meta property="og:description" content="Java1.6以后引入动态编译，在做一个浏览器端编写java代码，上传服务器编译和运行的在线评测系统或是服务器动态加载某些类文件进行编译的时候就用到了动态编译：通过JavaCompiler动态编译： 1234567public static int compileFile(String sourceFile)&amp;#123;	&#x2F;&#x2F;动态编译  JavaCompiler compiler &#x3D; ToolPr">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-05-11T03:26:51.000Z">
-<meta property="article:modified_time" content="2020-05-11T06:37:47.847Z">
-<meta property="article:author" content="XbsNotes">
+<meta property="article:published_time" content="2020-05-12T07:20:23.000Z">
+<meta property="article:modified_time" content="2020-05-12T08:00:53.458Z">
+<meta property="article:author" content="xNotes">
+<meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
 
 
@@ -126,7 +127,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Mist',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":10,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -148,13 +149,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/communication/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/05/12/Java-动态编译/"/>
 
 
 
 
 
-  <title>communication | XbsNotes</title>
+  <title>Java 动态编译 | xNotes</title>
   
 
 
@@ -174,7 +175,7 @@
 
 
 
-<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="XbsNotes" type="application/atom+xml">
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="xNotes" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -196,7 +197,7 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">XbsNotes</span>
+        <span class="site-title">xNotes</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -231,12 +232,12 @@
         </li>
       
         
-        <li class="menu-item menu-item-communication">
-          <a href="/communication/" rel="section">
+        <li class="menu-item menu-item-scientific">
+          <a href="/scientific/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-globe"></i> <br />
             
-            communication
+            scientific
           </a>
         </li>
       
@@ -247,16 +248,6 @@
               <i class="menu-item-icon fa fa-fw fa-laptop"></i> <br />
             
             Coding
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            Categories
           </a>
         </li>
       
@@ -335,34 +326,203 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/12/Java-%E5%8A%A8%E6%80%81%E7%BC%96%E8%AF%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xNotes">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/01.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xNotes">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">communication</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <h2 id="天线阵列"><a href="#天线阵列" class="headerlink" title="天线阵列:"></a>天线阵列:</h2><p><a href><strong>论文笔记：</strong>Statistical Analysis of Array Gain for Cooperative MISO Transmitters without CSI</a></p>
-
+          <h1 class="post-title" itemprop="name headline">Java 动态编译</h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-05-12T15:20:23+08:00">
+                2020-05-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <p>Java1.6以后引入动态编译，在做一个浏览器端编写java代码，上传服务器编译和运行的在线评测<br>系统或是服务器动态加载某些类文件进行编译的时候就用到了动态编译：<br><strong>通过JavaCompiler动态编译：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">compileFile</span><span class="params">(String sourceFile)</span></span>&#123;</span><br><span class="line">	<span class="comment">//动态编译</span></span><br><span class="line">  JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();</span><br><span class="line">  <span class="keyword">int</span> result = compiler.run(<span class="keyword">null</span>, <span class="keyword">null</span>, <span class="keyword">null</span>,sourceFile);</span><br><span class="line">  System.out.println(result==<span class="number">0</span>?<span class="string">"编译成功"</span>:<span class="string">"编译失败"</span>);</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>• 第一个参数：为java编译器提供参数<br>• 第二个参数：得到 Java 编译器的输出信息<br>• 第三个参数：接收编译器的 错误信息<br>• 第四个参数：可变参数（是一个String数组）能传入一个或多个 Java 源文件<br>• 返回值：0表示编译成功，非0表示编译失败</p>
+<a id="more"></a> 
+<p><strong>动态运行编译好的类：</strong></p>
+<ul>
+<li>通过Runtime.getRuntime()运行启动新的进程运行<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Runtime run = Runtime.getRuntime();</span><br><span class="line">Process process = run.exec(<span class="string">"java -cp path HelloWorld"</span>);</span><br></pre></td></tr></table></figure></li>
+<li>通过反射运行编译好的类<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//通过反射运行程序</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">runJavaClassByReflect</span><span class="params">(String dir,String classFile)</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    URL[] urls = <span class="keyword">new</span> URL[] &#123;<span class="keyword">new</span> URL(<span class="string">"file:/"</span>+dir)&#125;;</span><br><span class="line">    URLClassLoader loader = <span class="keyword">new</span> URLClassLoader(urls);</span><br><span class="line">    Class c = loader.loadClass(classFile);</span><br><span class="line">    <span class="comment">//调用加载类的main方法</span></span><br><span class="line">    Method m = c.getMethod(<span class="string">"main"</span>,String[]<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line">		m.invoke(null, (Object)new String[]&#123;&#125;);//反射调用main方法加(object)强制转型</span><br><span class="line">  &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">  	e.printStackTrace();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+
       
     </div>
     
     
     
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/uploads/wechatpay.png" alt="xNotes WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/uploads/alipay.png" alt="xNotes Alipay"/>
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/05/11/Java-%E5%8F%8D%E5%B0%84/" rel="next" title="Java 反射">
+                <i class="fa fa-chevron-left"></i> Java 反射
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -371,6 +531,15 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC81MDA1Ni8yNjU0Nw"></div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -391,26 +560,17 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <img class="site-author-image" itemprop="image"
                 src="/uploads/01.jpeg"
-                alt="XbsNotes" />
+                alt="xNotes" />
             
-              <p class="site-author-name" itemprop="name">XbsNotes</p>
-              <p class="site-description motion-element" itemprop="description">我还没秃！！！</p>
+              <p class="site-author-name" itemprop="name">xNotes</p>
+              <p class="site-description motion-element" itemprop="description">🍃</p>
           </div>
 
           <nav class="site-state motion-element">
@@ -420,7 +580,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -488,22 +648,6 @@
       </section>
 
       
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#天线阵列"><span class="nav-number">1.</span> <span class="nav-text">天线阵列:</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
 
       
 
@@ -521,7 +665,7 @@
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">XbsNotes</span>
+  <span class="author" itemprop="copyrightHolder">xNotes</span>
 
   
 </div>
@@ -582,9 +726,6 @@
 
 
 
-  
-  
-
 
 
 
@@ -617,16 +758,6 @@
   
   
     <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/three/three.min.js"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/three/canvas_sphere.min.js"></script>
   
 
 
@@ -675,6 +806,17 @@
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 

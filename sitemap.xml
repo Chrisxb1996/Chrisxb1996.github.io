@@ -2,37 +2,51 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite.com/Coding/index.html</loc>
+    <loc>http://yoursite.com/about/index.html</loc>
     
-    <lastmod>2020-05-11T15:14:52.323Z</lastmod>
+    <lastmod>2020-05-12T08:38:56.959Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2020/05/11/Java-%E5%8F%8D%E5%B0%84/</loc>
+    <loc>http://yoursite.com/scientific/index.html</loc>
     
-    <lastmod>2020-05-11T15:11:17.182Z</lastmod>
+    <lastmod>2020-05-12T08:27:56.305Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2020/05/10/Java-%E6%B3%A8%E8%A7%A3/</loc>
     
-    <lastmod>2020-05-11T07:26:38.552Z</lastmod>
+    <lastmod>2020-05-12T08:01:30.971Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2020/05/12/Java-%E5%8A%A8%E6%80%81%E7%BC%96%E8%AF%91/</loc>
+    
+    <lastmod>2020-05-12T08:00:53.458Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2020/05/11/Java-%E5%8F%8D%E5%B0%84/</loc>
+    
+    <lastmod>2020-05-12T07:58:14.321Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2020/05/09/%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</loc>
     
-    <lastmod>2020-05-11T07:26:20.442Z</lastmod>
+    <lastmod>2020-05-12T07:57:24.126Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/communication/index.html</loc>
+    <loc>http://yoursite.com/Coding/index.html</loc>
     
-    <lastmod>2020-05-11T06:37:47.847Z</lastmod>
+    <lastmod>2020-05-12T07:24:05.231Z</lastmod>
     
   </url>
   
