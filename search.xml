@@ -1,6 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Java 动态编译</title>
+    <url>/2020/05/12/Java-%E5%8A%A8%E6%80%81%E7%BC%96%E8%AF%91/</url>
+    <content><![CDATA[<p>Java1.6以后引入动态编译，在做一个浏览器端编写java代码，上传服务器编译和运行的在线评测<br>系统或是服务器动态加载某些类文件进行编译的时候就用到了动态编译：<br><strong>通过JavaCompiler动态编译：</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">compileFile</span><span class="params">(String sourceFile)</span></span>&#123;</span><br><span class="line">	<span class="comment">//动态编译</span></span><br><span class="line">  JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();</span><br><span class="line">  <span class="keyword">int</span> result = compiler.run(<span class="keyword">null</span>, <span class="keyword">null</span>, <span class="keyword">null</span>,sourceFile);</span><br><span class="line">  System.out.println(result==<span class="number">0</span>?<span class="string">"编译成功"</span>:<span class="string">"编译失败"</span>);</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>• 第一个参数：为java编译器提供参数<br>• 第二个参数：得到 Java 编译器的输出信息<br>• 第三个参数：接收编译器的 错误信息<br>• 第四个参数：可变参数（是一个String数组）能传入一个或多个 Java 源文件<br>• 返回值：0表示编译成功，非0表示编译失败</p>
+<a id="more"></a> 
+<p><strong>动态运行编译好的类：</strong></p>
+<ul>
+<li>通过Runtime.getRuntime()运行启动新的进程运行<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Runtime run = Runtime.getRuntime();</span><br><span class="line">Process process = run.exec(<span class="string">"java -cp path HelloWorld"</span>);</span><br></pre></td></tr></table></figure></li>
+<li>通过反射运行编译好的类<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//通过反射运行程序</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">runJavaClassByReflect</span><span class="params">(String dir,String classFile)</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    URL[] urls = <span class="keyword">new</span> URL[] &#123;<span class="keyword">new</span> URL(<span class="string">"file:/"</span>+dir)&#125;;</span><br><span class="line">    URLClassLoader loader = <span class="keyword">new</span> URLClassLoader(urls);</span><br><span class="line">    Class c = loader.loadClass(classFile);</span><br><span class="line">    <span class="comment">//调用加载类的main方法</span></span><br><span class="line">    Method m = c.getMethod(<span class="string">"main"</span>,String[]<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line">		m.invoke(null, (Object)new String[]&#123;&#125;);//反射调用main方法加(object)强制转型</span><br><span class="line">  &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">  	e.printStackTrace();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Java 反射</title>
     <url>/2020/05/11/Java-%E5%8F%8D%E5%B0%84/</url>
     <content><![CDATA[<p>虽然Java不是动态语言<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>，但Java语言具有一定的动态性，可以利用反射机制，字节码操作获得类似动态语言的特性，Java的动态性让编程更加灵活。<br><strong>反射：</strong>指的是可以在程序运行时加载、探知、使用编译期间完全未知的类。加载完类之后，在堆内存中，就产生了一个 Class 类型的对象<strong>(一个类只有一个 Class 对象)</strong>，这个对象就包含了完整的类的结构信息。我们可以通过这个对象看到类的结构。这个对象就像一面镜子，透过这个镜子看到类的结构，形象的称为反射。<br><strong>反射机制的作用：</strong>重点在于动态性：动态加载类、动态获取类的信息（属性、方法、构造器）；动态创建对象；动态调用方法、构造器；动态处理属性；此外还能处理泛型、注解。</p>
@@ -26,26 +46,6 @@
       <tags>
         <tag>Java</tag>
         <tag>reflection</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java 动态编译</title>
-    <url>/2020/05/12/Java-%E5%8A%A8%E6%80%81%E7%BC%96%E8%AF%91/</url>
-    <content><![CDATA[<p>Java1.6以后引入动态编译，在做一个浏览器端编写java代码，上传服务器编译和运行的在线评测<br>系统或是服务器动态加载某些类文件进行编译的时候就用到了动态编译：<br><strong>通过JavaCompiler动态编译：</strong></p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">compileFile</span><span class="params">(String sourceFile)</span></span>&#123;</span><br><span class="line">	<span class="comment">//动态编译</span></span><br><span class="line">  JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();</span><br><span class="line">  <span class="keyword">int</span> result = compiler.run(<span class="keyword">null</span>, <span class="keyword">null</span>, <span class="keyword">null</span>,sourceFile);</span><br><span class="line">  System.out.println(result==<span class="number">0</span>?<span class="string">"编译成功"</span>:<span class="string">"编译失败"</span>);</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>• 第一个参数：为java编译器提供参数<br>• 第二个参数：得到 Java 编译器的输出信息<br>• 第三个参数：接收编译器的 错误信息<br>• 第四个参数：可变参数（是一个String数组）能传入一个或多个 Java 源文件<br>• 返回值：0表示编译成功，非0表示编译失败</p>
-<a id="more"></a> 
-<p><strong>动态运行编译好的类：</strong></p>
-<ul>
-<li>通过Runtime.getRuntime()运行启动新的进程运行<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Runtime run = Runtime.getRuntime();</span><br><span class="line">Process process = run.exec(<span class="string">"java -cp path HelloWorld"</span>);</span><br></pre></td></tr></table></figure></li>
-<li>通过反射运行编译好的类<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//通过反射运行程序</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">runJavaClassByReflect</span><span class="params">(String dir,String classFile)</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    URL[] urls = <span class="keyword">new</span> URL[] &#123;<span class="keyword">new</span> URL(<span class="string">"file:/"</span>+dir)&#125;;</span><br><span class="line">    URLClassLoader loader = <span class="keyword">new</span> URLClassLoader(urls);</span><br><span class="line">    Class c = loader.loadClass(classFile);</span><br><span class="line">    <span class="comment">//调用加载类的main方法</span></span><br><span class="line">    Method m = c.getMethod(<span class="string">"main"</span>,String[]<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line">		m.invoke(null, (Object)new String[]&#123;&#125;);//反射调用main方法加(object)强制转型</span><br><span class="line">  &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">  	e.printStackTrace();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
