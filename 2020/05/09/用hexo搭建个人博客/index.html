@@ -62,17 +62,35 @@
   
 
   
+    
+      
+    
 
+    
   
 
+  
+    
+      
+    
+
+    
   
 
   
 
   
     
+      
     
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Courgette:300,300italic,400,400italic,700,700italic|Ma Shan Zheng:300,300italic,400,400italic,700,700italic|Averia Sans Libre:300,300italic,400,400italic,700,700italic|Averia Sans Libre:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
   
 
 
@@ -111,18 +129,18 @@
 
 
 
-<meta name="description" content="准备工作安装git：https:&#x2F;&#x2F;git-scm.com安装nodejs：https:&#x2F;&#x2F;nodejs.org&#x2F;en&#x2F;安装hexo1.以管理员身份运行：sudo su2.可以验证是否装好git和nodejs输入：git -version；node -v；npm -v；查看对应的版本是否一致">
+<meta name="description" content="准备工作安装git：https:&#x2F;&#x2F;git-scm.com安装nodejs：https:&#x2F;&#x2F;nodejs.org&#x2F;en&#x2F;安装hexo1.以管理员身份运行：sudo su2.可以验证是否装好git和nodejs输入：git -version；node -v；npm -v；查看对应的版本是否一致。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="用hexo搭建个人博客">
 <meta property="og:url" content="https://chrisxb1996.github.io/2020/05/09/%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/index.html">
 <meta property="og:site_name" content="xNotes">
-<meta property="og:description" content="准备工作安装git：https:&#x2F;&#x2F;git-scm.com安装nodejs：https:&#x2F;&#x2F;nodejs.org&#x2F;en&#x2F;安装hexo1.以管理员身份运行：sudo su2.可以验证是否装好git和nodejs输入：git -version；node -v；npm -v；查看对应的版本是否一致">
+<meta property="og:description" content="准备工作安装git：https:&#x2F;&#x2F;git-scm.com安装nodejs：https:&#x2F;&#x2F;nodejs.org&#x2F;en&#x2F;安装hexo1.以管理员身份运行：sudo su2.可以验证是否装好git和nodejs输入：git -version；node -v；npm -v；查看对应的版本是否一致。">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://chrisxb1996.github.io/2020/05/09/%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/001.png">
 <meta property="og:image" content="https://chrisxb1996.github.io/2020/05/09/%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/002.png">
 <meta property="og:image" content="https://chrisxb1996.github.io/2020/05/09/%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/003.png">
 <meta property="article:published_time" content="2020-05-09T08:50:49.000Z">
-<meta property="article:modified_time" content="2020-05-12T10:14:20.961Z">
+<meta property="article:modified_time" content="2020-05-13T04:46:33.638Z">
 <meta property="article:author" content="xNotes">
 <meta property="article:tag" content="git">
 <meta property="article:tag" content="hexo">
@@ -165,6 +183,16 @@
 
 
   <title>用hexo搭建个人博客 | xNotes</title>
+  <style>
+   .forkme{
+  display: none;
+  }
+   @media (min-width: 768px) {
+  .forkme{
+  display: inline;
+  }
+   }
+   </style>
   
 
 
@@ -436,9 +464,7 @@
       
 
       
-        <p><strong>准备工作</strong><br>安装git：<a href="https://git-scm.com" target="_blank" rel="noopener">https://git-scm.com</a><br>安装nodejs：<a href="https://nodejs.org/en/" target="_blank" rel="noopener">https://nodejs.org/en/</a><br><strong>安装hexo</strong><br>1.以管理员身份运行：sudo su<br>2.可以验证是否装好git和nodejs输入：git -version；node -v；npm -v；查看对应的版本是否一致</p>
-<a id="more"></a>
-<p>3.在国内建议先安装淘宝镜像源 cnpm再进行安装hexo：<br>输入：npm install -g cnpm –registry=<a href="https://registry.npm.taobao.org" target="_blank" rel="noopener">https://registry.npm.taobao.org</a>; 安装完后查    看是否安装成功： cnpm -v：<br><img src="/2020/05/09/%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/001.png" alt="001"><br>    利用cnpm安装hexo博客 ：cnpm install -g hexo-cli<br>    安装成功可查看hexo信息：hexo -v:<br>    <img src="/2020/05/09/%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/002.png" width="33%" height="33%"><br>4.可以新建一个 文件夹作为存放目录：mkdir blog，进到目录中：cd blog/ (注意操作都在当前文件夹下进行操作)<br>5.至此，hexo已经为你生成了基础博客框架，启动hexo输入 :hexo s<br><img src="/2020/05/09/%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/003.png" width="80%" height="80%"><br>6.在浏览器输入地址<a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a> 可以看到基本框架已经生成。</p>
+        <p><strong>准备工作</strong><br>安装git：<a href="https://git-scm.com" target="_blank" rel="noopener">https://git-scm.com</a><br>安装nodejs：<a href="https://nodejs.org/en/" target="_blank" rel="noopener">https://nodejs.org/en/</a><br><strong>安装hexo</strong><br>1.以管理员身份运行：sudo su<br>2.可以验证是否装好git和nodejs输入：git -version；node -v；npm -v；查看对应的版本是否一致。<a id="more"></a><br>3.在国内建议先安装淘宝镜像源 cnpm再进行安装hexo：<br>输入：npm install -g cnpm –registry=<a href="https://registry.npm.taobao.org" target="_blank" rel="noopener">https://registry.npm.taobao.org</a>; 安装完后查    看是否安装成功： cnpm -v：<br><img src="/2020/05/09/%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/001.png" alt="001"><br>    利用cnpm安装hexo博客 ：cnpm install -g hexo-cli<br>    安装成功可查看hexo信息：hexo -v:<br>    <img src="/2020/05/09/%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/002.png" width="33%" height="33%"><br>4.可以新建一个 文件夹作为存放目录：mkdir blog，进到目录中：cd blog/ (注意操作都在当前文件夹下进行操作)<br>5.至此，hexo已经为你生成了基础博客框架，启动hexo输入 :hexo s<br><img src="/2020/05/09/%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/003.png" width="80%" height="80%"><br>6.在浏览器输入地址<a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a> 可以看到基本框架已经生成。</p>
 
       
     </div>
@@ -485,11 +511,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/git/" rel="tag"># git</a>
+            <a href="/tags/git/" rel="tag"><i class="fa fa-tag"></i> git</a>
           
-            <a href="/tags/hexo/" rel="tag"># hexo</a>
+            <a href="/tags/hexo/" rel="tag"><i class="fa fa-tag"></i> hexo</a>
           
-            <a href="/tags/nodejs/" rel="tag"># nodejs</a>
+            <a href="/tags/nodejs/" rel="tag"><i class="fa fa-tag"></i> nodejs</a>
           
         </div>
       

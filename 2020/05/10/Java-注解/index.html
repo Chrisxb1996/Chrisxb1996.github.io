@@ -62,17 +62,35 @@
   
 
   
+    
+      
+    
 
+    
   
 
+  
+    
+      
+    
+
+    
   
 
   
 
   
     
+      
     
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Courgette:300,300italic,400,400italic,700,700italic|Ma Shan Zheng:300,300italic,400,400italic,700,700italic|Averia Sans Libre:300,300italic,400,400italic,700,700italic|Averia Sans Libre:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
   
 
 
@@ -119,7 +137,7 @@
 <meta property="og:description" content="Annotation的作用：1.不是程序本身，可以对程序作出解释。(这一点，跟注释没什么区别)2.可以被其他程序(比如：编译器，其他类(通过反射))读取。(注解信息处理流程，是注解和注释的重大区别如果没有注解信息处理流程，则注解毫无意义)Annotation的格式：注解是以“@注释名”在代码中存在的，还可以添加一些参数值，例如：@SuppressWarnings(value&#x3D;”unchecked”">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-05-10T03:56:57.000Z">
-<meta property="article:modified_time" content="2020-05-12T10:13:24.761Z">
+<meta property="article:modified_time" content="2020-05-13T04:50:19.378Z">
 <meta property="article:author" content="xNotes">
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="annotation">
@@ -160,6 +178,16 @@
 
 
   <title>Java 注解 | xNotes</title>
+  <style>
+   .forkme{
+  display: none;
+  }
+   @media (min-width: 768px) {
+  .forkme{
+  display: inline;
+  }
+   }
+   </style>
   
 
 
@@ -431,15 +459,22 @@
       
 
       
-        <p><strong>Annotation的作用：</strong><br>1.不是程序本身，可以对程序作出解释。(这一点，跟注释没什么区别)<br>2.可以被其他程序(比如：编译器，其他类(通过反射))读取。(注解信息处理流程，是注解和注释的重大区别如果没有注解信息处理流程，则注解毫无意义)<br><strong>Annotation的格式：</strong><br>注解是以“@注释名”在代码中存在的，还可以添加一些参数值，例如：<br>@SuppressWarnings(value=”unchecked”)。(抑制警告)<br><strong>Annotation在哪里使用：</strong><br>可以附加在package, class, method, field等上面，相当于给它们添加了额外的辅助信息，我们可以通过反射机制编程实现对这些元数据的访问。</p>
-<a id="more"></a>
-<p><strong>自定义注解：</strong><br>格式：public @interface 注解名 {定义体}<br>1.方法的名称就是参数的名称;<br>2.返回值类型就是参数的类型（返回值类型只能是基本类型、Class、String、enum）;<br>3.可以通过default来声明参数的默认值<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>;<br>4.如果只有一个参数成员，一般参数名为value;<br><strong>元注解：</strong><br>元注解的作用就是负责注解其他注解。 Java定义了4个标准的meta-annotation类型，它们被用来提供对其它 annotation类型作说明。<br>1.@Target：用于描述注解的使用范围（即:被描述的注解可以用在什么地方）<br>ElementType.TYPE；ElementType.FIELD…<br>2.@Retention：表示需要在什么级别保存该注释信息，用于描述注解的生命周期<br>SOURCE；CLASS；RUNTIME(可被反射机制读取)<br>3.@Documented<br>4.@Inherited<br><strong>通过反射读取注解的流程：</strong><br>自定义类注解：</p>
+        <p><strong>Annotation的作用：</strong><br>1.不是程序本身，可以对程序作出解释。(这一点，跟注释没什么区别)<br>2.可以被其他程序(比如：编译器，其他类(通过反射))读取。(注解信息处理流程，是注解和注释的重大区别如果没有注解信息处理流程，则注解毫无意义)<br><strong>Annotation的格式：</strong><br>注解是以“@注释名”在代码中存在的，还可以添加一些参数值，例如：<br>@SuppressWarnings(value=”unchecked”)。(抑制警告)<br><strong>Annotation在哪里使用：</strong><br>可以附加在package, class, method, field等上面，相当于给它们添加了额外的辅助信息，我们可以通过反射机制编程实现对这些元数据的访问。<a id="more"></a><br><strong>自定义注解：</strong><br>格式：public @interface 注解名 {定义体}<br>1.方法的名称就是参数的名称;<br>2.返回值类型就是参数的类型（返回值类型只能是基本类型、Class、String、enum）;<br>3.可以通过default来声明参数的默认值<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>;<br>4.如果只有一个参数成员，一般参数名为value;<br><strong>元注解：</strong><br>元注解的作用就是负责注解其他注解。 Java定义了4个标准的meta-annotation类型，它们被用来提供对其它 annotation类型作说明。<br>1.@Target：用于描述注解的使用范围（即:被描述的注解可以用在什么地方）<br>ElementType.TYPE；ElementType.FIELD…<br>2.@Retention：表示需要在什么级别保存该注释信息，用于描述注解的生命周期<br>SOURCE；CLASS；RUNTIME(可被反射机制读取)<br>3.@Documented<br>4.@Inherited<br><strong>通过反射读取注解的流程：</strong></p>
+<ul>
+<li>自定义类注解：</li>
+</ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Target</span>(value = &#123;ElementType.TYPE&#125;)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> test01Table &#123;</span><br><span class="line">    <span class="function">String <span class="title">value</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>自定义属性注解：</p>
+<ul>
+<li>自定义属性注解：</li>
+</ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Target</span>(value = &#123;ElementType.FIELD&#125;)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> test01Field &#123;</span><br><span class="line">    <span class="function">String <span class="title">columnName</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function">String <span class="title">type</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">length</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在test01中加入注解：</p>
+<ul>
+<li>在test01中加入注解：</li>
+</ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@test</span>01Table(<span class="string">"tb_member"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">test01</span> </span>&#123;</span><br><span class="line">    <span class="meta">@test</span>01Field(columnName = <span class="string">"id"</span>, type = <span class="string">"int"</span>, length = <span class="number">10</span>)</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line">    <span class="meta">@test</span>01Field(columnName = <span class="string">"sname"</span>, type = <span class="string">"varchar"</span>, length = <span class="number">10</span>)</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="meta">@test</span>01Field(columnName = <span class="string">"age"</span>, type = <span class="string">"int"</span>, length = <span class="number">3</span>)</span><br><span class="line">    <span class="keyword">private</span>  <span class="keyword">int</span> age;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>读取test01中的注解：</p>
+<ul>
+<li>读取test01中的注解：</li>
+</ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 通过反射读取自定义注解</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ReadAnnotation</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Class clazz = Class.forName(<span class="string">"com.sgg.annotation.test01"</span>);</span><br><span class="line">            <span class="comment">//获得类的有效注解</span></span><br><span class="line">            Annotation[] annotations = clazz.getAnnotations();</span><br><span class="line">            <span class="keyword">for</span>(Annotation a : annotations)&#123;</span><br><span class="line">                System.out.println(a);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">//获得类的制定注解</span></span><br><span class="line">            test01Table tt = (test01Table)clazz.getAnnotation(test01Table<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">            System.out.println(tt.value());</span><br><span class="line"></span><br><span class="line">            <span class="comment">//获得类的属性的对应注解</span></span><br><span class="line">            Field f = clazz.getDeclaredField(<span class="string">"id"</span>);</span><br><span class="line">            test01Field tf = (test01Field)f.getAnnotation(test01Field<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">            System.out.println(tf.columnName() +<span class="string">"--"</span>+ tf.type() +<span class="string">"--"</span>+ tf.length());</span><br><span class="line"></span><br><span class="line">            <span class="comment">//接下来可以利用注解信息写出DDL语句，完成相应的数据库操作</span></span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <div id="footnotes"><hr><div id="footnotelist"><ol style="list-style:none; padding-left: 0;"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">1.</span><span style="display: inline-block; vertical-align: top;">注解元素必须要有值。我们定义注解元素时，经常使用空字符串、0作为默认值。也经常使用负数(比如：-1)表示不存在的含义</span><a href="#fnref:1" rev="footnote"> ↩</a></li></ol></div></div>
       
@@ -487,9 +522,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Java/" rel="tag"># Java</a>
+            <a href="/tags/Java/" rel="tag"><i class="fa fa-tag"></i> Java</a>
           
-            <a href="/tags/annotation/" rel="tag"># annotation</a>
+            <a href="/tags/annotation/" rel="tag"><i class="fa fa-tag"></i> annotation</a>
           
         </div>
       
