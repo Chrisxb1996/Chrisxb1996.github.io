@@ -1213,7 +1213,7 @@ pre .javascript .function {
   border-bottom-color: #222;
 }
 .menu .menu-item .fa {
-  margin-right: 5px;
+  margin-right: 3px;
 }
 .use-motion .menu-item {
   opacity: 0;
@@ -1943,7 +1943,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ffd5d2;
+  background: #535e36;
 }
 .links-of-blogroll {
   font-size: 13px;
