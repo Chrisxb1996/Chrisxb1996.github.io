@@ -1,36 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>JVM核心机制-类加载过程</title>
-    <url>/2020/05/13/JVM%E6%A0%B8%E5%BF%83%E6%9C%BA%E5%88%B6-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B/</url>
-    <content><![CDATA[<p><strong>类加载的作用：</strong>将class文件字节码内容加载到内存中，并将这些静态数据转换成方法区中的运行时数据结构，在堆中生成一个代表这个类的java.lang.Class对象，作为方法区类数据的访问入口：<br><img src="/2020/05/13/JVM%E6%A0%B8%E5%BF%83%E6%9C%BA%E5%88%B6-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B/JVM01.png" width="80%" height="80%"></p>
-<p><strong>类加载器的层次结构(树状结构):</strong></p>
-<ul>
-<li>引导类加载器（bootstrap class loader）：它用来加载 Java 的核心库)，是用C来实现的，并不继承自 java.lang.ClassLoader；<a id="more"></a></li>
-<li>扩展类加载器（extensions class loader）：用来加载 Java 的扩展库，Java 虚拟机的实现会提供一个<strong>扩展库</strong>目录。该类加载器在此目录里面查找并加载 Java类，由ExtClassLoader实现；</li>
-<li>应用程序类加载器（application class loader）：它根据 Java 应用的类路径来加载 Java 类，一般来说，Java 应用的类都是由它来完成加载的，由AppClassLoader实现；</li>
-<li>自定义类加载器： 开发人员可以通过继承 java.lang.ClassLoader类的方式，实现自己的类加载器，以满足一些特殊的需求。</li>
-</ul>
-<p>注意：<u>类加载器加载类的时候是线程安全的</u></p>
-<img src="/2020/05/13/JVM%E6%A0%B8%E5%BF%83%E6%9C%BA%E5%88%B6-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B/JVM02.png" width="80%" height="80%">
-
-<p><strong>双亲委托机制：</strong></p>
-<ul>
-<li>就是某个特定的类加载器在接到加载类的请求时，首先将加载任务委托给父类加载器，依次追溯，直到最高的爷爷辈的，如果父类加载器可以完成类加载任务，就成功返回；只有父类加载器无法完成此加载任务时，才自己去加载。</li>
-<li>双亲委托机制是为了保证 Java 核心库的类型安全，这种机制就保证不会出现用户自己能定义java.lang.Object类的情况。</li>
-<li>类加载器除了用于加载类，也是安全的最基本的屏障。</li>
-<li>双亲委托机制是代理模式的一种，但并不是所有的类加载器都采用双亲委托机制：tomcat服务器类加载器也使用代理模式，所不同的是它是首先尝试去加载某个类，如果找不到再代理给父类加载器，这与一般类加载器的顺序是相反的。</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>JVM</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Java 动态编译</title>
     <url>/2020/05/12/Java-%E5%8A%A8%E6%80%81%E7%BC%96%E8%AF%91/</url>
     <content><![CDATA[<p>Java1.6以后引入动态编译，在做一个浏览器端编写java代码，上传服务器编译和运行的在线评测<br>系统或是服务器动态加载某些类文件进行编译的时候就用到了动态编译：<br><strong>通过JavaCompiler动态编译：</strong></p>
@@ -72,6 +42,36 @@
         <tag>Java</tag>
         <tag>reflection</tag>
         <tag>反射</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JVM核心机制-类加载过程</title>
+    <url>/2020/05/13/JVM%E6%A0%B8%E5%BF%83%E6%9C%BA%E5%88%B6-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B/</url>
+    <content><![CDATA[<p><strong>类加载的作用：</strong>将class文件字节码内容加载到内存中，并将这些静态数据转换成方法区中的运行时数据结构，在堆中生成一个代表这个类的java.lang.Class对象，作为方法区类数据的访问入口：<br><img src="/2020/05/13/JVM%E6%A0%B8%E5%BF%83%E6%9C%BA%E5%88%B6-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B/JVM01.png" width="80%" height="80%"></p>
+<p><strong>类加载器的层次结构(树状结构):</strong></p>
+<ul>
+<li>引导类加载器（bootstrap class loader）：它用来加载 Java 的核心库)，是用C来实现的，并不继承自 java.lang.ClassLoader；<a id="more"></a></li>
+<li>扩展类加载器（extensions class loader）：用来加载 Java 的扩展库，Java 虚拟机的实现会提供一个<strong>扩展库</strong>目录。该类加载器在此目录里面查找并加载 Java类，由ExtClassLoader实现；</li>
+<li>应用程序类加载器（application class loader）：它根据 Java 应用的类路径来加载 Java 类，一般来说，Java 应用的类都是由它来完成加载的，由AppClassLoader实现；</li>
+<li>自定义类加载器： 开发人员可以通过继承 java.lang.ClassLoader类的方式，实现自己的类加载器，以满足一些特殊的需求。</li>
+</ul>
+<p>注意：<u>类加载器加载类的时候是线程安全的</u></p>
+<img src="/2020/05/13/JVM%E6%A0%B8%E5%BF%83%E6%9C%BA%E5%88%B6-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B/JVM02.png" width="80%" height="80%">
+
+<p><strong>双亲委托机制：</strong></p>
+<ul>
+<li>就是某个特定的类加载器在接到加载类的请求时，首先将加载任务委托给父类加载器，依次追溯，直到最高的爷爷辈的，如果父类加载器可以完成类加载任务，就成功返回；只有父类加载器无法完成此加载任务时，才自己去加载。</li>
+<li>双亲委托机制是为了保证 Java 核心库的类型安全，这种机制就保证不会出现用户自己能定义java.lang.Object类的情况。</li>
+<li>类加载器除了用于加载类，也是安全的最基本的屏障。</li>
+<li>双亲委托机制是代理模式的一种，但并不是所有的类加载器都采用双亲委托机制：tomcat服务器类加载器也使用代理模式，所不同的是它是首先尝试去加载某个类，如果找不到再代理给父类加载器，这与一般类加载器的顺序是相反的。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>JVM</tag>
       </tags>
   </entry>
   <entry>
@@ -172,6 +172,90 @@
         <tag>Java</tag>
         <tag>设计模式</tag>
         <tag>工厂模式</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>计算机网络概述</title>
+    <url>/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%A6%82%E8%BF%B0/</url>
+    <content><![CDATA[<h3 id="OSI七层参考模型"><a href="#OSI七层参考模型" class="headerlink" title="OSI七层参考模型:"></a>OSI七层参考模型:</h3><p>1.应用层：能够产生网络流量能够和用户交互的应用程序；<br>2.表示层：加密，压缩，开发人员；<br>3.会话层：服务和客户建立的会话：netstat -n；<br>4.传输层：可靠传输建立会话，不可靠传输，流量控制；<br>5.网络层：IP地址编址，选择最佳路径；<a id="more"></a><br>6.数据链路层：数据如何封装，添加物理层地址(MAC)；<br>7.物理层：电压，借口标准；</p>
+<p><strong>网络排错：</strong>从底层到高层</p>
+<h3 id="五层参考模型"><a href="#五层参考模型" class="headerlink" title="五层参考模型:"></a>五层参考模型:</h3><p>传输的过程：<br><img src="/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%A6%82%E8%BF%B0/001.png" width="80%" height="80%"></p>
+<img src="/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%A6%82%E8%BF%B0/002.png" width="80%" height="80%">
+
+]]></content>
+      <categories>
+        <category>计算机网络</category>
+      </categories>
+      <tags>
+        <tag>计算机网络</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数据链路层</title>
+    <url>/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/</url>
+    <content><![CDATA[<h3 id="基本问题"><a href="#基本问题" class="headerlink" title="基本问题"></a>基本问题</h3><ul>
+<li><h4 id="基本概念："><a href="#基本概念：" class="headerlink" title="基本概念："></a>基本概念：</h4><p>1.主机H1向H2发送数据：<br>层次上来看：</p>
+<img src="/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/图片 1.png" width="80%" height="80%">
+仅从数据链路层观察帧的流动：
+<img src="/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/图片 2.png" width="80%" height="80%">
+
+<p><strong>注意：</strong>可以看到路由器只到网络层(三层协议)，没有应用层，和传输层；<a id="more"></a> </p>
+<p>2.数据链路层传输的是帧：</p>
+<img src="/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/数据链路层传送帧.png" width="80%" height="80%">
+</li>
+<li><h4 id="数据链路层的三个基本点："><a href="#数据链路层的三个基本点：" class="headerlink" title="数据链路层的三个基本点："></a>数据链路层的三个基本点：</h4><p>1.封装成帧<br>2.透明传输<br>3.差错控制</p>
+<ul>
+<li><p><strong>封装成帧：</strong>封装成帧(framing)就是在一段数据的前后分别添加首部和尾部，然后就构成了一个帧。确定帧的界限。首部和尾部的一个重要作用就是进行帧定界。</p>
+<img src="/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/封装成帧.png" width="80%" height="80%">
+</li>
+<li><p><strong>透明传输：</strong>发送端的数据链路层在数据中出现控制字符“SOH”或“EOT”的前面插入一个转义字符“ESC”。如果转义字符也出现数据当中，那么应在转义字符前插入一个转义字符。在接收端进行处理之后可以还原出原始数据。这个过程透明传输的内容是转义字符，用户察觉不到转义字符的存在。</p>
+<img src="/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/透明传输.png" width="100%" height="100%">
+</li>
+<li><p><strong>差错控制：</strong>在数据链路层传送的帧中，广泛使用了循环冗余检验 (CRC) 的检错技术：<strong>CRC是一种无比特差错，而不是无传输差错的检测机制</strong>。将得到的FCS(帧检验序列 )添加在原序列后面，在接收端检验：若得出的余数 <em>R</em> = 0，则判定这个帧没有差错，就接受(accept)；若余数 <em>R</em> != 0，则判定这个帧有差错，就丢弃，在高层进行重传指令。</p>
+<img src="/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/CRC.png" width="80%" height="80%">
+
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="数据链路层的信道类型"><a href="#数据链路层的信道类型" class="headerlink" title="数据链路层的信道类型"></a><strong>数据链路层的信道类型</strong></h3><ul>
+<li><h4 id="点对点信道："><a href="#点对点信道：" class="headerlink" title="点对点信道："></a>点对点信道：</h4><p>使用一对一的点对点通信方式，不会发生碰撞，因此也比较简单，使用 PPP 协议进行控制。PPP 协议是用户计算机和 ISP 进行通信时所使用的数据链路层协议，支持身份验证，支持多个网络层协议。<br>PPP协议帧格式：<br>1.A、C：在点到点信道没有实际意义，固定为：FF、03；<br>2.协议字段(2字节)：用于标识信息部分是什么内容；<br>3.FCS(2字节)：表示CRC得到的帧检验序列；</p>
+<img src="/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/PPP协议.png" width="80%" height="80%">
+</li>
+<li><h4 id="广播信道："><a href="#广播信道：" class="headerlink" title="广播信道："></a>广播信道：</h4><p>这种信道使用一对多的广播通信方式，因此过程比较复杂。广播信道上连接的主机很多，因此必须使用专用的共享信道协议来协调这些主机的数据发送<strong>(随机接入)</strong>：CSMA/CD(载波监听多点接入/碰撞检测) 协议：<br><strong>多点接入：</strong>表示许多计算机以多点接入的方式连接在一根总线上。<br><strong>载波监听：</strong>是指每一个站在发送数据之前先要检测一下总线上是否有其他计算机在发送数据，如果有，则暂时不要发送数据，以免发生碰撞。<br><strong>碰撞检测</strong>：在发送中，如果监听到信道已有其它主机正在发送数据，就表示发生了碰撞。虽然每个主机在发送数据之前都已经监听到信道为空闲，但是由于传播时延的存在，还是有可能会发生碰撞。</p>
+<img src="/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/随机接入碰撞.png" width="80%" height="80%">
+
+<p>记端到端的传播时延为 τ，最先发送的站点最多经过 2τ 就可以知道是否发生了碰撞，<strong>称 2τ 为 争用期</strong> 。只有经过争用期之后还没有检测到碰撞，才能肯定这次发送不会发生碰撞。以太网中经过计算，最短有效帧长为512bit，也就是64个字节，规定凡是长度小于64字节的帧都是无效帧。<br>当发生碰撞时，站点要停止发送，等待一段时间再发送。这个时间采用 <strong>截断二进制指数退避算法</strong> 来确定。从离散的整数集合 {0, 1, .., (2k-1)} 中随机取出一个数，记作 r，然后取 r 倍的争用期作为重传等待时间。<br><strong>注意：</strong>该协议只能(只能进行半双工通信)。</p>
+</li>
+</ul>
+<h3 id="以太局域网"><a href="#以太局域网" class="headerlink" title="以太局域网"></a>以太局域网</h3><ul>
+<li><h4 id="概述："><a href="#概述：" class="headerlink" title="概述："></a>概述：</h4><p><strong>以太网是一种星型拓扑结构局域网。</strong>早期使用集线器(hub)进行连接，<strong>集线器是一种物理层设备</strong>， 作用于比特而不是帧。目前以太网使用交换机替代了集线器，<strong>交换机是一种链路层设备</strong>，它不会发生碰撞，能根据 MAC 地址进行存储转发。<br>以太网提供的服务是不可靠的交付，即尽最大努力的交付。当接收站收到有差错的数据帧时就丢弃此帧，其他什么也不做。差错的纠正由高层来决定。如果高层发现丢失了一些数据而进行重传，但以太网并不知道这是一个重传的帧，而是当作一个新的数据帧来发送。</p>
+</li>
+<li><h4 id="信道利用率："><a href="#信道利用率：" class="headerlink" title="信道利用率："></a>信道利用率：</h4><p>一个帧从开始发送，经可能发生的碰撞后，将再重传数次，到发送成功且信道转为空闲时为止，是发送一帧所需的平均时间。 信道利用率可以表示为：T0/发送一帧所需的平均时间。</p>
+<img src="/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/以太网信道利用率.png" width="75%" height="75%"> 
+</li>
+<li><h4 id="MAC层-数据链路层的子层-："><a href="#MAC层-数据链路层的子层-：" class="headerlink" title="MAC层(数据链路层的子层)："></a>MAC层(数据链路层的子层)：</h4><p>在局域网中，硬件地址又称为物理地址，或 MAC 地址。MAC 地址是链路层地址，长度为 6 字节（48 位），用于唯一标识网络适配器（网卡）。一台主机拥有多少个网络适配器就有多少个 MAC 地址。例如笔记本电脑普遍存在无线网络适配器和有线网络适配器，因此就有两个 MAC 地址。<br>以太网MAC帧格式：</p>
+<img src="/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/以太网帧格式.png" width="85%" height="85%"> 
+
+</li>
+</ul>
+<h3 id="扩展以太网"><a href="#扩展以太网" class="headerlink" title="扩展以太网"></a>扩展以太网</h3><ul>
+<li><h4 id="网桥-淘汰-："><a href="#网桥-淘汰-：" class="headerlink" title="网桥(淘汰)："></a>网桥(淘汰)：</h4><p>在数据链路层扩展局域网是使用网桥。网桥工作在数据链路层，它根据 MAC 帧的目的地址对收到的帧进行转发。网桥具有过滤帧的功能。当网桥收到一个帧时，并不是向所有的接口转发此帧，而是先检查此帧的目的 MAC 地址，然后再确定将该帧转发到哪一个接口。</p>
+<img src="/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/网桥扩展以太网.png" width="80%" height="80%"> 
+</li>
+<li><h4 id="交换机："><a href="#交换机：" class="headerlink" title="交换机："></a>交换机：</h4><p>交换机具有自学习能力，学习的是交换表的内容，交换表中存储着 MAC 地址到接口的映射。正是由于这种自学习能力，因此交换机是一种即插即用设备，不需要网络管理员手动配置交换表内容。<br>1.端口独享带宽；<br>2.比集线器安全，可以设置固定MAC地址；<br>3.接口到计算机全双工；<br>4.全双工模式不再使用CSMA/CD协议；<br>5.接口可以工作在不同的速率；<br>6.广播帧会转发到全部端口；</p>
+<img src="/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/交换机.png" width="80%" height="80%"> 
+</li>
+<li><h4 id="虚拟局域网-VLAN"><a href="#虚拟局域网-VLAN" class="headerlink" title="虚拟局域网(VLAN):"></a>虚拟局域网(VLAN):</h4><p>虚拟局域网可以建立与物理位置无关的逻辑组，只有在同一个虚拟局域网中的成员才会收到链路层广播信息。例如：在研发部某台主机广播的消息只能住研发部收到，销售部和人力资源部则收不到消息。<br>使用 VLAN 干线连接来建立虚拟局域网，每台交换机上的一个特殊接口被设置为干线接口，以互连 VLAN 交换机。IEEE 定义了一种扩展的以太网帧格式 802.1Q，它在标准以太网帧上加进了 4 字节首部 VLAN 标签，用于表示该帧属于哪一个虚拟局域网。</p>
+<img src="/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/VLAN.png" width="70%" height="70%"> </li>
+</ul>
+]]></content>
+      <categories>
+        <category>计算机网络</category>
+      </categories>
+      <tags>
+        <tag>计算机网络</tag>
+        <tag>数据链路层</tag>
       </tags>
   </entry>
 </search>
