@@ -1,6 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>JVM核心机制-类加载过程</title>
+    <url>/2020/05/13/JVM%E6%A0%B8%E5%BF%83%E6%9C%BA%E5%88%B6-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B/</url>
+    <content><![CDATA[<p><strong>类加载的作用：</strong>将class文件字节码内容加载到内存中，并将这些静态数据转换成方法区中的运行时数据结构，在堆中生成一个代表这个类的java.lang.Class对象，作为方法区类数据的访问入口：<br><img src="/2020/05/13/JVM%E6%A0%B8%E5%BF%83%E6%9C%BA%E5%88%B6-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B/JVM01.png" width="80%" height="80%"></p>
+<p><strong>类加载器的层次结构(树状结构):</strong></p>
+<ul>
+<li>引导类加载器（bootstrap class loader）：它用来加载 Java 的核心库)，是用C来实现的，并不继承自 java.lang.ClassLoader；<a id="more"></a></li>
+<li>扩展类加载器（extensions class loader）：用来加载 Java 的扩展库，Java 虚拟机的实现会提供一个<strong>扩展库</strong>目录。该类加载器在此目录里面查找并加载 Java类，由ExtClassLoader实现；</li>
+<li>应用程序类加载器（application class loader）：它根据 Java 应用的类路径来加载 Java 类，一般来说，Java 应用的类都是由它来完成加载的，由AppClassLoader实现；</li>
+<li>自定义类加载器： 开发人员可以通过继承 java.lang.ClassLoader类的方式，实现自己的类加载器，以满足一些特殊的需求。</li>
+</ul>
+<p>注意：<u>类加载器加载类的时候是线程安全的</u></p>
+<img src="/2020/05/13/JVM%E6%A0%B8%E5%BF%83%E6%9C%BA%E5%88%B6-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B/JVM02.png" width="80%" height="80%">
+
+<p><strong>双亲委托机制：</strong></p>
+<ul>
+<li>就是某个特定的类加载器在接到加载类的请求时，首先将加载任务委托给父类加载器，依次追溯，直到最高的爷爷辈的，如果父类加载器可以完成类加载任务，就成功返回；只有父类加载器无法完成此加载任务时，才自己去加载。</li>
+<li>双亲委托机制是为了保证 Java 核心库的类型安全，这种机制就保证不会出现用户自己能定义java.lang.Object类的情况。</li>
+<li>类加载器除了用于加载类，也是安全的最基本的屏障。</li>
+<li>双亲委托机制是代理模式的一种，但并不是所有的类加载器都采用双亲委托机制：tomcat服务器类加载器也使用代理模式，所不同的是它是首先尝试去加载某个类，如果找不到再代理给父类加载器，这与一般类加载器的顺序是相反的。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>JVM</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Java 动态编译</title>
     <url>/2020/05/12/Java-%E5%8A%A8%E6%80%81%E7%BC%96%E8%AF%91/</url>
     <content><![CDATA[<p>Java1.6以后引入动态编译，在做一个浏览器端编写java代码，上传服务器编译和运行的在线评测<br>系统或是服务器动态加载某些类文件进行编译的时候就用到了动态编译：<br><strong>通过JavaCompiler动态编译：</strong></p>
@@ -46,36 +76,6 @@
       <tags>
         <tag>Java</tag>
         <tag>annotation</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JVM核心机制-类加载过程</title>
-    <url>/2020/05/13/JVM%E6%A0%B8%E5%BF%83%E6%9C%BA%E5%88%B6-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B/</url>
-    <content><![CDATA[<p><strong>类加载的作用：</strong>将class文件字节码内容加载到内存中，并将这些静态数据转换成方法区中的运行时数据结构，在堆中生成一个代表这个类的java.lang.Class对象，作为方法区类数据的访问入口：<br><img src="/2020/05/13/JVM%E6%A0%B8%E5%BF%83%E6%9C%BA%E5%88%B6-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B/JVM01.png" width="80%" height="80%"></p>
-<p><strong>类加载器的层次结构(树状结构):</strong></p>
-<ul>
-<li>引导类加载器（bootstrap class loader）：它用来加载 Java 的核心库)，是用C来实现的，并不继承自 java.lang.ClassLoader；<a id="more"></a></li>
-<li>扩展类加载器（extensions class loader）：用来加载 Java 的扩展库，Java 虚拟机的实现会提供一个<strong>扩展库</strong>目录。该类加载器在此目录里面查找并加载 Java类，由ExtClassLoader实现；</li>
-<li>应用程序类加载器（application class loader）：它根据 Java 应用的类路径来加载 Java 类，一般来说，Java 应用的类都是由它来完成加载的，由AppClassLoader实现；</li>
-<li>自定义类加载器： 开发人员可以通过继承 java.lang.ClassLoader类的方式，实现自己的类加载器，以满足一些特殊的需求。</li>
-</ul>
-<p>注意：<u>类加载器加载类的时候是线程安全的</u></p>
-<img src="/2020/05/13/JVM%E6%A0%B8%E5%BF%83%E6%9C%BA%E5%88%B6-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B/JVM02.png" width="80%" height="80%">
-
-<p><strong>双亲委托机制：</strong></p>
-<ul>
-<li>就是某个特定的类加载器在接到加载类的请求时，首先将加载任务委托给父类加载器，依次追溯，直到最高的爷爷辈的，如果父类加载器可以完成类加载任务，就成功返回；只有父类加载器无法完成此加载任务时，才自己去加载。</li>
-<li>双亲委托机制是为了保证 Java 核心库的类型安全，这种机制就保证不会出现用户自己能定义java.lang.Object类的情况。</li>
-<li>类加载器除了用于加载类，也是安全的最基本的屏障。</li>
-<li>双亲委托机制是代理模式的一种，但并不是所有的类加载器都采用双亲委托机制：tomcat服务器类加载器也使用代理模式，所不同的是它是首先尝试去加载某个类，如果找不到再代理给父类加载器，这与一般类加载器的顺序是相反的。</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>JVM</tag>
       </tags>
   </entry>
   <entry>
@@ -175,141 +175,6 @@
       </tags>
   </entry>
   <entry>
-    <title>网络层</title>
-    <url>/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%B1%82/</url>
-    <content><![CDATA[<!-- toc -->
-
-<ul>
-<li><a href="#概述">概述</a></li>
-<li><a href="#tcpip协议栈">TCP/IP协议栈</a></li>
-<li><a href="#ip地址编址">IP地址编址</a><ul>
-<li><a href="#点分十进制记法">点分十进制记法：</a></li>
-<li><a href="#分类">分类</a></li>
-<li><a href="#划分子网">划分子网</a></li>
-<li><a href="#构造超网无分类cidr">构造超网(无分类CIDR)</a></li>
-<li><a href="#计算机a到b的通信过程"><strong>计算机A到B的通信过程：</strong></a></li>
-</ul>
-</li>
-<li><a href="#arp协议">ARP协议</a></li>
-<li><a href="#ip数据包">IP数据包</a></li>
-<li><a href="#ip转发分组">IP转发分组</a></li>
-<li><a href="#网际控制报文协议-icmp">网际控制报文协议 ICMP</a></li>
-</ul>
-<!-- tocstop -->
-
-<a id="more"></a> 
-
-<h3><span id="概述">概述</span></h3><ul>
-<li>因为网络层是整个互联网的核心，因此应当让网络层尽可能简单。网络层向上只提供简单灵活的、无连接的、尽最大努力交互的数据报服务。使用 IP 协议，可以把异构的物理网络连接起来，使得在网络层看起来好像是一个统一的网络。</li>
-</ul>
-<img src="/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%B1%82/虚拟互联网络.png" width="100%" height="100%">
-
-<h3><span id="tcpip协议栈">TCP/IP协议栈</span></h3><img src="/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%B1%82/协议栈.png" width="100%" height="100%">
-
-<h3><span id="ip地址编址">IP地址编址</span></h3><h4><span id="点分十进制记法">点分十进制记法：</span></h4><img src="/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%B1%82/点分十进制记法.png" width="100%" height="100%">
-
-<h4><span id="分类">分类</span></h4><ul>
-<li><p>由两部分组成，网络号和主机号，其中不同分类具有不同的网络号长度，并且是固定的。<br>IP 地址 ::= {&lt; 网络号 &gt;, &lt; 主机号 &gt;}</p>
-</li>
-<li><p>1-126：A类地址，127是本机地址；<br>128-191：B类地址；<br>192-223：C类地址；<br>224-240：D类地址；</p>
-</li>
-</ul>
-<img src="/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%B1%82/IP地址分类.png" width="100%" height="100%">
-
-<ul>
-<li><strong>特殊的几个地址：</strong><br>127.0.0.1   本地环回地址；<br>169.254.0.0   windows链接失败自动分配的地址；<br>10.0.0.0   保留的私网地址；<br>172.16.0.0   —   172.31.0.0   保留的私网地址；<br>192.168.0.0  —   192.168.255.0   保留的私网地址；</li>
-</ul>
-<h4><span id="划分子网">划分子网</span></h4><ul>
-<li><p>通过在<strong>主机号字段中拿一部分作为子网号</strong>，把两级 IP 地址划分为三级 IP 地址。划分子网纯属一个单位内部的事情。单位对外仍然表现为没有划分子网的网络。</p>
-</li>
-<li><p>IP 地址 ::= {&lt; 网络号 &gt;, &lt; 子网号 &gt;, &lt; 主机号 &gt;}</p>
-</li>
-<li><p>要使用子网，必须配置子网掩码。例如：一个 C 类地址的默认子网掩码为 255.255.255.0，如果 B 类地址的子网占两个比特，那么子网掩码为11111111 11111111 11111111 11000000，也就是 255.255.255.192。</p>
-</li>
-</ul>
-<p><strong>注意：</strong>外部网络看不到子网的存在。</p>
-<img src="/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%B1%82/子网划分.png" width="100%" height="100%">
-
-<h4><span id="构造超网无分类cidr">构造超网(无分类CIDR)</span></h4><ul>
-<li>CIDR 消除了传统的 A 类、B 类和 C 类地址以及划分子网的概念，因而可以更加有效地分配 IPv4 的地址空间。</li>
-<li>CIDR使用各种长度的“网络前缀”(network-prefix)来代替分类地址中的网络号和子网号。从三级编址（使用子网掩码）又回到了两级编址。</li>
-<li>IP地址 ::= {&lt;网络前缀&gt;, &lt;主机号&gt;}      </li>
-<li>一个 CIDR 地址块可以表示很多地址，这种地址的聚合常称为路由聚合，它使得路由表中的一个项目可以表示很多个（例如上千个）原来传统分类地址的路由。路由聚合也称为构成超网(supernetting)。</li>
-<li>CIDR 虽然不使用子网了，但仍然使用“掩码”这一名词（但不叫子网掩码）。</li>
-<li>在路由表中的项目由“网络前缀”和“下一跳地址”组成，在查找时可能会得到不止一个匹配结果，应当采用最长前缀匹配来确定应该匹配哪一个。</li>
-</ul>
-<h4><span id="计算机a到b的通信过程"><strong>计算机A到B的通信过程：</strong></span></h4><img src="/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%B1%82/数据通信过程.png" width="100%" height="100%">
-
-<h3><span id="arp协议">ARP协议</span></h3><img src="/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%B1%82/ARP.png" width="100%" height="100%">
-
-<ul>
-<li><p>不管网络层使用的是什么协议，在实际网络的链路上传送数据帧时，最终还是必须使用硬件地址。 </p>
-</li>
-<li><p>每一个主机都设有一个 ARP 高速缓存(ARP cache)，里面有所在的局域网上的各主机和路由器的 IP 地址到硬件地址的映射表。</p>
-</li>
-<li><p>当主机 A 欲向本局域网上的某个主机 B 发送 IP 数据报时，就先在其 ARP 高速缓存中查看有无主机 B 的 IP 地址。如有，就可查出其对应的硬件地址，再将此硬件地址写入 MAC 帧，然后通过局域网将该 MAC 帧发往此硬件地址。 </p>
-</li>
-</ul>
-<img src="/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%B1%82/ARP请求过程.png" width="100%" height="100%">
-
-<p><strong>注意：</strong>ARP 是解决同一个局域网上的主机或路由器的 IP 地址和硬件地址的映射问题。如果所要找的主机和源主机不在同一个局域网上，那么就要通过 ARP 找到一个位于本局域网上的某个路由器的硬件地址，然后把分组发送给这个路由器，让这个路由器把分组转发给下一个网络。剩下的工作就由下一个网络来做。</p>
-<h3><span id="ip数据包">IP数据包</span></h3><ul>
-<li>一个 IP 数据包由首部和数据两部分组成。</li>
-<li>首部的前一部分是固定长度，共 20 字节，是所有 IP 数据报必须具有的。</li>
-<li>在首部的固定部分的后面是一些可选字段，其长度是可变的。</li>
-</ul>
-<img src="/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%B1%82/IP数据包.png" width="100%" height="100%">
-
-<ul>
-<li>版本——占 4 位，指 IP 协议的版本：4（IPv4）和 6（IPv6）</li>
-<li>首部长度——占 4 位，可表示的最大数值，是 15 个单位(一个单位为 4 字节)，因此 IP 的首部长度的最大值是 60 字节。</li>
-<li>区分服务——占 8 位，用来获得更好的服务，在一般的情况下都不使用这个字段 。</li>
-<li>总长度——占 16 位，指首部和数据之和的长度，单位为字节，因此数据报的最大长度为 65535 字节。总长度必须不超过最大传送单元 MTU。</li>
-<li>标识——占 16 位，它是一个计数器，用来产生数据报的标识。 </li>
-<li>标志——占 3 位，目前只有前两位有意义。</li>
-<li>片偏移——占 312位，较长的分组在分片后某片在原分组中的相对位置。片偏移以 <strong>8 个字节为偏移单位</strong>。</li>
-<li>生存时间——占 8 位，记为 TTL (Time To Live)，数据报在网络中可通过的路由器个数的最大值。</li>
-<li>协议——占 8 位，该字段指出此数据报携带的数据使用何种协议以便目的主机的 IP 层将数据部分上交给哪个处理过程。</li>
-<li>首部检验和——占 16 位，因为数据报每经过一个路由器，都要重新计算检验和，因此检验和不包含数据部分可以减少计算的工作量(简单计算)。</li>
-<li>源地址和目的地址——占 32 位，都各占 4 字节。</li>
-</ul>
-<p><strong>注意：</strong>IP 首部的可变部分就是一个选项字段，用来支持排错、测量以及安全等措施，内容很丰富。选项字段的长度可变，从 1 个字节到 40 个字节不等，取决于所选择的项目。增加首部的可变部分是为了增加 IP 数据报的功能，但这同时也使得 IP 数据报的首部长度成为可变的。这就增加了每一个路由器处理数据报的开销。实际上这些选项很少被使用。 </p>
-<h3><span id="ip转发分组">IP转发分组</span></h3><ul>
-<li>路由就是路由器从一个网段到另外一个网段转发数据包的过程，即数据包通过路由器转发，就是数据路由。</li>
-<li>网络畅通条件，要求数据包必须能够到达目标地址，同时数据包必须能够返回发送地址。(有去有回)</li>
-<li>这就要求沿途经过的路由器必须知道到目标网络如何转发数据包，即到达目的网络下一跳转发给哪个路由器，也就是必须有到达目标网络的路由，沿途的路由器还必须有数据包返回所需的路由。</li>
-</ul>
-<p><strong>注意：**</strong>IP 数据报的首部中没有地方可以用来指明“下一跳路由器的 IP 地址”。当路由器收到待转发的数据报，不是将下一跳路由器的 IP 地址填入 IP 数据报，而是送交下层的网络接口软件。网络接口软件使用 ARP 负责将下一跳路由器的 IP 地址转换成硬件地址，并将此硬件地址放在链路层的 MAC 帧的首部，然后根据这个硬件地址找到下一跳路由器。** </p>
-<h3><span id="网际控制报文协议-icmp">网际控制报文协议 ICMP</span></h3><ul>
-<li>ICMP 是为了更有效地转发 IP 数据报和提高交付成功的机会。它封装在 IP 数据报中，ICMP 报文作为 IP 层数据报的数据，加上数据报的首部，组成 IP 数据报发送出去。ICMP 不是高层协议，而是 IP 层的协议。</li>
-</ul>
-<p>###</p>
-]]></content>
-      <categories>
-        <category>计算机网络</category>
-      </categories>
-      <tags>
-        <tag>计算机网络</tag>
-        <tag>网络层</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>计算机网络概述</title>
-    <url>/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%A6%82%E8%BF%B0/</url>
-    <content><![CDATA[<p><strong>OSI七层参考模型:</strong><br>1.应用层：能够产生网络流量能够和用户交互的应用程序；<br>2.表示层：加密，压缩，开发人员；<br>3.会话层：服务和客户建立的会话：netstat -n；<br>4.传输层：可靠传输建立会话，不可靠传输，流量控制；<br>5.网络层：IP地址编址，选择最佳路径；<a id="more"></a><br>6.数据链路层：数据如何封装，添加物理层地址(MAC)；<br>7.物理层：电压，借口标准；</p>
-<p><strong>网络排错：</strong>从底层到高层</p>
-<p><strong>五层参考模型:</strong><br><strong>传输的过程：</strong><br><img src="/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%A6%82%E8%BF%B0/001.png" width="100%" height="100%"></p>
-<img src="/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%A6%82%E8%BF%B0/002.png" width="100%" height="100%">
-
-]]></content>
-      <categories>
-        <category>计算机网络</category>
-      </categories>
-      <tags>
-        <tag>计算机网络</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>数据链路层</title>
     <url>/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/</url>
     <content><![CDATA[<!-- toc -->
@@ -364,6 +229,141 @@
       <tags>
         <tag>计算机网络</tag>
         <tag>数据链路层</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>网络层</title>
+    <url>/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%B1%82/</url>
+    <content><![CDATA[<!-- toc -->
+
+<ul>
+<li><a href="#概述">概述</a></li>
+<li><a href="#tcpip协议栈">TCP/IP协议栈</a></li>
+<li><a href="#ip地址编址">IP地址编址</a><ul>
+<li><a href="#点分十进制记法">点分十进制记法：</a></li>
+<li><a href="#分类">分类</a></li>
+<li><a href="#划分子网">划分子网</a></li>
+<li><a href="#构造超网无分类cidr">构造超网(无分类CIDR)</a></li>
+<li><a href="#计算机a到b的通信过程">计算机A到B的通信过程：</a></li>
+</ul>
+</li>
+<li><a href="#arp协议">ARP协议</a></li>
+<li><a href="#ip数据包">IP数据包</a></li>
+<li><a href="#ip转发分组">IP转发分组</a></li>
+<li><a href="#网际控制报文协议-icmp">网际控制报文协议 ICMP</a></li>
+</ul>
+<!-- tocstop -->
+
+<a id="more"></a> 
+
+<h3><span id="概述">概述</span></h3><ul>
+<li>因为网络层是整个互联网的核心，因此应当让网络层尽可能简单。网络层向上只提供简单灵活的、无连接的、尽最大努力交互的数据报服务。使用 IP 协议，可以把异构的物理网络连接起来，使得在网络层看起来好像是一个统一的网络。</li>
+</ul>
+<img src="/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%B1%82/虚拟互联网络.png" width="100%" height="100%">
+
+<h3><span id="tcpip协议栈">TCP/IP协议栈</span></h3><img src="/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%B1%82/协议栈.png" width="100%" height="100%">
+
+<h3><span id="ip地址编址">IP地址编址</span></h3><h4><span id="点分十进制记法">点分十进制记法：</span></h4><img src="/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%B1%82/点分十进制记法.png" width="100%" height="100%">
+
+<h4><span id="分类">分类</span></h4><ul>
+<li><p>由两部分组成，网络号和主机号，其中不同分类具有不同的网络号长度，并且是固定的。<br>IP 地址 ::= {&lt; 网络号 &gt;, &lt; 主机号 &gt;}</p>
+</li>
+<li><p>1-126：A类地址，127是本机地址；<br>128-191：B类地址；<br>192-223：C类地址；<br>224-240：D类地址；</p>
+</li>
+</ul>
+<img src="/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%B1%82/IP地址分类.png" width="100%" height="100%">
+
+<ul>
+<li><strong>特殊的几个地址：</strong><br>127.0.0.1   本地环回地址；<br>169.254.0.0   windows链接失败自动分配的地址；<br>10.0.0.0   保留的私网地址；<br>172.16.0.0   —   172.31.0.0   保留的私网地址；<br>192.168.0.0  —   192.168.255.0   保留的私网地址；</li>
+</ul>
+<h4><span id="划分子网">划分子网</span></h4><ul>
+<li><p>通过在<strong>主机号字段中拿一部分作为子网号</strong>，把两级 IP 地址划分为三级 IP 地址。划分子网纯属一个单位内部的事情。单位对外仍然表现为没有划分子网的网络。</p>
+</li>
+<li><p>IP 地址 ::= {&lt; 网络号 &gt;, &lt; 子网号 &gt;, &lt; 主机号 &gt;}</p>
+</li>
+<li><p>要使用子网，必须配置子网掩码。例如：一个 C 类地址的默认子网掩码为 255.255.255.0，如果 B 类地址的子网占两个比特，那么子网掩码为11111111 11111111 11111111 11000000，也就是 255.255.255.192。</p>
+</li>
+</ul>
+<p><strong>注意：</strong>外部网络看不到子网的存在。</p>
+<img src="/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%B1%82/子网划分.png" width="100%" height="100%">
+
+<h4><span id="构造超网无分类cidr">构造超网(无分类CIDR)</span></h4><ul>
+<li>CIDR 消除了传统的 A 类、B 类和 C 类地址以及划分子网的概念，因而可以更加有效地分配 IPv4 的地址空间。</li>
+<li>CIDR使用各种长度的“网络前缀”(network-prefix)来代替分类地址中的网络号和子网号。从三级编址（使用子网掩码）又回到了两级编址。</li>
+<li>IP地址 ::= {&lt;网络前缀&gt;, &lt;主机号&gt;}      </li>
+<li>一个 CIDR 地址块可以表示很多地址，这种地址的聚合常称为路由聚合，它使得路由表中的一个项目可以表示很多个（例如上千个）原来传统分类地址的路由。路由聚合也称为构成超网(supernetting)。</li>
+<li>CIDR 虽然不使用子网了，但仍然使用“掩码”这一名词（但不叫子网掩码）。</li>
+<li>在路由表中的项目由“网络前缀”和“下一跳地址”组成，在查找时可能会得到不止一个匹配结果，应当采用最长前缀匹配来确定应该匹配哪一个。</li>
+</ul>
+<h4><span id="计算机a到b的通信过程">计算机A到B的通信过程：</span></h4><img src="/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%B1%82/数据通信过程.png" width="100%" height="100%">
+
+<h3><span id="arp协议">ARP协议</span></h3><img src="/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%B1%82/ARP.png" width="100%" height="100%">
+
+<ul>
+<li><p>不管网络层使用的是什么协议，在实际网络的链路上传送数据帧时，最终还是必须使用硬件地址。 </p>
+</li>
+<li><p>每一个主机都设有一个 ARP 高速缓存(ARP cache)，里面有所在的局域网上的各主机和路由器的 IP 地址到硬件地址的映射表。</p>
+</li>
+<li><p>当主机 A 欲向本局域网上的某个主机 B 发送 IP 数据报时，就先在其 ARP 高速缓存中查看有无主机 B 的 IP 地址。如有，就可查出其对应的硬件地址，再将此硬件地址写入 MAC 帧，然后通过局域网将该 MAC 帧发往此硬件地址。 </p>
+</li>
+</ul>
+<img src="/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%B1%82/ARP请求过程.png" width="100%" height="100%">
+
+<p><strong>注意：</strong>ARP 是解决同一个局域网上的主机或路由器的 IP 地址和硬件地址的映射问题。如果所要找的主机和源主机不在同一个局域网上，那么就要通过 ARP 找到一个位于本局域网上的某个路由器的硬件地址，然后把分组发送给这个路由器，让这个路由器把分组转发给下一个网络。剩下的工作就由下一个网络来做。</p>
+<h3><span id="ip数据包">IP数据包</span></h3><ul>
+<li>一个 IP 数据包由首部和数据两部分组成。</li>
+<li>首部的前一部分是固定长度，共 20 字节，是所有 IP 数据报必须具有的。</li>
+<li>在首部的固定部分的后面是一些可选字段，其长度是可变的。</li>
+</ul>
+<img src="/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%B1%82/IP数据包.png" width="100%" height="100%">
+
+<ul>
+<li><strong>版本——占 4 位：</strong>指 IP 协议的版本：4（IPv4）和 6（IPv6）</li>
+<li><strong>首部长度——占 4 位：</strong>可表示的最大数值，是 15 个单位(一个单位为 4 字节)，因此 IP 的首部长度的最大值是 60 字节。</li>
+<li><strong>区分服务——占 8 位：</strong>用来获得更好的服务，在一般的情况下都不使用这个字段 。</li>
+<li><strong>总长度——占 16 位：</strong>指首部和数据之和的长度，单位为字节，因此数据报的最大长度为 65535 字节。总长度必须不超过最大传送单元 MTU。</li>
+<li><strong>标识——占 16 位：</strong>它是一个计数器，用来产生数据报的标识。 </li>
+<li><strong>标志——占 3 位：</strong>目前只有前两位有意义。</li>
+<li><strong>片偏移——占 312位：</strong>较长的分组在分片后某片在原分组中的相对位置。片偏移以 <strong>8 个字节为偏移单位</strong>。</li>
+<li><strong>生存时间——占 8 位：</strong>记为 TTL (Time To Live)，数据报在网络中可通过的路由器个数的最大值。</li>
+<li><strong>协议——占 8 位：</strong>该字段指出此数据报携带的数据使用何种协议以便目的主机的 IP 层将数据部分上交给哪个处理过程。</li>
+<li><strong>首部检验和——占 16 位：</strong>因为数据报每经过一个路由器，都要重新计算检验和，因此检验和不包含数据部分可以减少计算的工作量(简单计算)。</li>
+<li><strong>源地址和目的地址——占 32 位：</strong>都各占 4 字节。</li>
+</ul>
+<p><strong>注意：</strong>IP 首部的可变部分就是一个选项字段，用来支持排错、测量以及安全等措施，内容很丰富。选项字段的长度可变，从 1 个字节到 40 个字节不等，取决于所选择的项目。增加首部的可变部分是为了增加 IP 数据报的功能，但这同时也使得 IP 数据报的首部长度成为可变的。这就增加了每一个路由器处理数据报的开销。实际上这些选项很少被使用。 </p>
+<h3><span id="ip转发分组">IP转发分组</span></h3><ul>
+<li>路由就是路由器从一个网段到另外一个网段转发数据包的过程，即数据包通过路由器转发，就是数据路由。</li>
+<li>网络畅通条件，要求数据包必须能够到达目标地址，同时数据包必须能够返回发送地址。(有去有回)</li>
+<li>这就要求沿途经过的路由器必须知道到目标网络如何转发数据包，即到达目的网络下一跳转发给哪个路由器，也就是必须有到达目标网络的路由，沿途的路由器还必须有数据包返回所需的路由。</li>
+</ul>
+<p><strong>注意：**</strong>IP 数据报的首部中没有地方可以用来指明“下一跳路由器的 IP 地址”。当路由器收到待转发的数据报，不是将下一跳路由器的 IP 地址填入 IP 数据报，而是送交下层的网络接口软件。网络接口软件使用 ARP 负责将下一跳路由器的 IP 地址转换成硬件地址，并将此硬件地址放在链路层的 MAC 帧的首部，然后根据这个硬件地址找到下一跳路由器。** </p>
+<h3><span id="网际控制报文协议-icmp">网际控制报文协议 ICMP</span></h3><ul>
+<li>ICMP 是为了更有效地转发 IP 数据报和提高交付成功的机会。它封装在 IP 数据报中，ICMP 报文作为 IP 层数据报的数据，加上数据报的首部，组成 IP 数据报发送出去。ICMP 不是高层协议，而是 IP 层的协议。</li>
+</ul>
+<p>###</p>
+]]></content>
+      <categories>
+        <category>计算机网络</category>
+      </categories>
+      <tags>
+        <tag>计算机网络</tag>
+        <tag>网络层</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>计算机网络概述</title>
+    <url>/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%A6%82%E8%BF%B0/</url>
+    <content><![CDATA[<p><strong>OSI七层参考模型:</strong><br>1.应用层：能够产生网络流量能够和用户交互的应用程序；<br>2.表示层：加密，压缩，开发人员；<br>3.会话层：服务和客户建立的会话：netstat -n；<br>4.传输层：可靠传输建立会话，不可靠传输，流量控制；<br>5.网络层：IP地址编址，选择最佳路径；<a id="more"></a><br>6.数据链路层：数据如何封装，添加物理层地址(MAC)；<br>7.物理层：电压，借口标准；</p>
+<p><strong>网络排错：</strong>从底层到高层</p>
+<p><strong>五层参考模型:</strong><br><strong>传输的过程：</strong><br><img src="/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%A6%82%E8%BF%B0/001.png" width="100%" height="100%"></p>
+<img src="/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%A6%82%E8%BF%B0/002.png" width="100%" height="100%">
+
+]]></content>
+      <categories>
+        <category>计算机网络</category>
+      </categories>
+      <tags>
+        <tag>计算机网络</tag>
       </tags>
   </entry>
 </search>

@@ -146,7 +146,7 @@
 <meta property="og:image" content="https://chrisxb1996.github.io/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%B1%82/ARP%E8%AF%B7%E6%B1%82%E8%BF%87%E7%A8%8B.png">
 <meta property="og:image" content="https://chrisxb1996.github.io/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%B1%82/IP%E6%95%B0%E6%8D%AE%E5%8C%85.png">
 <meta property="article:published_time" content="2020-05-15T13:55:05.000Z">
-<meta property="article:modified_time" content="2020-05-16T15:38:35.065Z">
+<meta property="article:modified_time" content="2020-05-16T15:48:42.835Z">
 <meta property="article:author" content="xNotes">
 <meta property="article:tag" content="计算机网络">
 <meta property="article:tag" content="网络层">
@@ -480,7 +480,7 @@
 <li><a href="#分类">分类</a></li>
 <li><a href="#划分子网">划分子网</a></li>
 <li><a href="#构造超网无分类cidr">构造超网(无分类CIDR)</a></li>
-<li><a href="#计算机a到b的通信过程"><strong>计算机A到B的通信过程：</strong></a></li>
+<li><a href="#计算机a到b的通信过程">计算机A到B的通信过程：</a></li>
 </ul>
 </li>
 <li><a href="#arp协议">ARP协议</a></li>
@@ -531,7 +531,7 @@
 <li>CIDR 虽然不使用子网了，但仍然使用“掩码”这一名词（但不叫子网掩码）。</li>
 <li>在路由表中的项目由“网络前缀”和“下一跳地址”组成，在查找时可能会得到不止一个匹配结果，应当采用最长前缀匹配来确定应该匹配哪一个。</li>
 </ul>
-<h4><span id="计算机a到b的通信过程"><strong>计算机A到B的通信过程：</strong></span></h4><img src="/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%B1%82/数据通信过程.png" width="100%" height="100%">
+<h4><span id="计算机a到b的通信过程">计算机A到B的通信过程：</span></h4><img src="/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%B1%82/数据通信过程.png" width="100%" height="100%">
 
 <h3><span id="arp协议">ARP协议</span></h3><img src="/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%B1%82/ARP.png" width="100%" height="100%">
 
@@ -554,17 +554,17 @@
 <img src="/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%B1%82/IP数据包.png" width="100%" height="100%">
 
 <ul>
-<li>版本——占 4 位，指 IP 协议的版本：4（IPv4）和 6（IPv6）</li>
-<li>首部长度——占 4 位，可表示的最大数值，是 15 个单位(一个单位为 4 字节)，因此 IP 的首部长度的最大值是 60 字节。</li>
-<li>区分服务——占 8 位，用来获得更好的服务，在一般的情况下都不使用这个字段 。</li>
-<li>总长度——占 16 位，指首部和数据之和的长度，单位为字节，因此数据报的最大长度为 65535 字节。总长度必须不超过最大传送单元 MTU。</li>
-<li>标识——占 16 位，它是一个计数器，用来产生数据报的标识。 </li>
-<li>标志——占 3 位，目前只有前两位有意义。</li>
-<li>片偏移——占 312位，较长的分组在分片后某片在原分组中的相对位置。片偏移以 <strong>8 个字节为偏移单位</strong>。</li>
-<li>生存时间——占 8 位，记为 TTL (Time To Live)，数据报在网络中可通过的路由器个数的最大值。</li>
-<li>协议——占 8 位，该字段指出此数据报携带的数据使用何种协议以便目的主机的 IP 层将数据部分上交给哪个处理过程。</li>
-<li>首部检验和——占 16 位，因为数据报每经过一个路由器，都要重新计算检验和，因此检验和不包含数据部分可以减少计算的工作量(简单计算)。</li>
-<li>源地址和目的地址——占 32 位，都各占 4 字节。</li>
+<li><strong>版本——占 4 位：</strong>指 IP 协议的版本：4（IPv4）和 6（IPv6）</li>
+<li><strong>首部长度——占 4 位：</strong>可表示的最大数值，是 15 个单位(一个单位为 4 字节)，因此 IP 的首部长度的最大值是 60 字节。</li>
+<li><strong>区分服务——占 8 位：</strong>用来获得更好的服务，在一般的情况下都不使用这个字段 。</li>
+<li><strong>总长度——占 16 位：</strong>指首部和数据之和的长度，单位为字节，因此数据报的最大长度为 65535 字节。总长度必须不超过最大传送单元 MTU。</li>
+<li><strong>标识——占 16 位：</strong>它是一个计数器，用来产生数据报的标识。 </li>
+<li><strong>标志——占 3 位：</strong>目前只有前两位有意义。</li>
+<li><strong>片偏移——占 312位：</strong>较长的分组在分片后某片在原分组中的相对位置。片偏移以 <strong>8 个字节为偏移单位</strong>。</li>
+<li><strong>生存时间——占 8 位：</strong>记为 TTL (Time To Live)，数据报在网络中可通过的路由器个数的最大值。</li>
+<li><strong>协议——占 8 位：</strong>该字段指出此数据报携带的数据使用何种协议以便目的主机的 IP 层将数据部分上交给哪个处理过程。</li>
+<li><strong>首部检验和——占 16 位：</strong>因为数据报每经过一个路由器，都要重新计算检验和，因此检验和不包含数据部分可以减少计算的工作量(简单计算)。</li>
+<li><strong>源地址和目的地址——占 32 位：</strong>都各占 4 字节。</li>
 </ul>
 <p><strong>注意：</strong>IP 首部的可变部分就是一个选项字段，用来支持排错、测量以及安全等措施，内容很丰富。选项字段的长度可变，从 1 个字节到 40 个字节不等，取决于所选择的项目。增加首部的可变部分是为了增加 IP 数据报的功能，但这同时也使得 IP 数据报的首部长度成为可变的。这就增加了每一个路由器处理数据报的开销。实际上这些选项很少被使用。 </p>
 <h3><span id="ip转发分组">IP转发分组</span></h3><ul>
