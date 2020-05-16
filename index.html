@@ -90,7 +90,7 @@
   
     
     
-    <link href="//fonts.googleapis.com/css?family=Courgette:300,300italic,400,400italic,700,700italic|Ma Shan Zheng:300,300italic,400,400italic,700,700italic|Averia Sans Libre:300,300italic,400,400italic,700,700italic|Averia Sans Libre:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Courgette:300,300italic,400,400italic,700,700italic|Ma Shan Zheng:300,300italic,400,400italic,700,700italic|Lora:300,300italic,400,400italic,700,700italic|Averia Sans Libre:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
   
 
 
@@ -368,6 +368,147 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://chrisxb1996.github.io/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%B1%82/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xNotes">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/01.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xNotes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%B1%82/" itemprop="url">网络层</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-05-15T21:55:05+08:00">
+                2020-05-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机网络</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://chrisxb1996.github.io/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -460,13 +601,33 @@
 
       
         
-          <h3 id="基本问题"><a href="#基本问题" class="headerlink" title="基本问题"></a>基本问题</h3><ul>
-<li><h4 id="基本概念："><a href="#基本概念：" class="headerlink" title="基本概念："></a>基本概念：</h4><p>1.主机H1向H2发送数据：<br>层次上来看：</p>
-<img src="/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/图片 1.png" width="80%" height="80%">
-仅从数据链路层观察帧的流动：
-<img src="/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/图片 2.png" width="80%" height="80%">
+          <!-- toc -->
 
-<p><strong>注意：</strong>可以看到路由器只到网络层(三层协议)，没有应用层，和传输层；</p></li></ul>
+<ul>
+<li><a href="#基本问题">基本问题</a><ul>
+<li><a href="#基本概念">基本概念：</a></li>
+<li><a href="#数据链路层的三个基本点">数据链路层的三个基本点：</a></li>
+</ul>
+</li>
+<li><a href="#数据链路层的信道类型">数据链路层的信道类型</a><ul>
+<li><a href="#点对点信道">点对点信道：</a></li>
+<li><a href="#广播信道">广播信道：</a></li>
+</ul>
+</li>
+<li><a href="#以太局域网">以太局域网</a><ul>
+<li><a href="#概述">概述：</a></li>
+<li><a href="#信道利用率">信道利用率：</a></li>
+<li><a href="#mac层数据链路层的子层">MAC层(数据链路层的子层)：</a></li>
+</ul>
+</li>
+<li><a href="#扩展以太网">扩展以太网</a><ul>
+<li><a href="#网桥淘汰">网桥(淘汰)：</a></li>
+<li><a href="#交换机">交换机：</a></li>
+<li><a href="#虚拟局域网vlan">虚拟局域网(VLAN):</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/#more" rel="contents">
@@ -1730,7 +1891,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1752,7 +1913,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
