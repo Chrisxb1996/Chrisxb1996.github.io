@@ -186,7 +186,7 @@ th {
 body {
   position: relative;
   font-family: 'Courgette', "PingFang SC", "Microsoft YaHei", sans-serif;
-  font-size: 15px;
+  font-size: 16px;
   line-height: 2;
   color: #555;
   background: #fff;
@@ -203,7 +203,7 @@ body {
 }
 @media (min-width: 1600px) {
   body {
-    font-size: 17px;
+    font-size: 18px;
   }
 }
 h1,
@@ -226,51 +226,51 @@ h6 {
   margin: 20px 0 15px;
 }
 h1 {
-  font-size: 24px;
+  font-size: 31px;
 }
 @media (max-width: 767px) {
   h1 {
-    font-size: 20px;
+    font-size: 27px;
   }
 }
 h2 {
-  font-size: 22px;
+  font-size: 28px;
 }
 @media (max-width: 767px) {
   h2 {
-    font-size: 18px;
+    font-size: 24px;
   }
 }
 h3 {
-  font-size: 20px;
+  font-size: 25px;
 }
 @media (max-width: 767px) {
   h3 {
-    font-size: 16px;
+    font-size: 21px;
   }
 }
 h4 {
-  font-size: 18px;
+  font-size: 22px;
 }
 @media (max-width: 767px) {
   h4 {
-    font-size: 14px;
+    font-size: 18px;
   }
 }
 h5 {
-  font-size: 16px;
+  font-size: 19px;
 }
 @media (max-width: 767px) {
   h5 {
-    font-size: 12px;
+    font-size: 15px;
   }
 }
 h6 {
-  font-size: 14px;
+  font-size: 16px;
 }
 @media (max-width: 767px) {
   h6 {
-    font-size: 10px;
+    font-size: 12px;
   }
 }
 p {
@@ -445,7 +445,7 @@ body {
 .header-inner {
   margin: 0 auto;
   padding: 100px 0 70px;
-  width: 705px;
+  width: 700px;
 }
 @media (min-width: 1600px) {
   .container .header-inner {
@@ -457,7 +457,7 @@ body {
 }
 .main-inner {
   margin: 0 auto;
-  width: 705px;
+  width: 700px;
 }
 @media (min-width: 1600px) {
   .container .main-inner {
@@ -474,7 +474,7 @@ body {
 .footer-inner {
   box-sizing: border-box;
   margin: 20px auto;
-  width: 705px;
+  width: 700px;
 }
 @media (min-width: 1600px) {
   .container .footer-inner {
@@ -1237,7 +1237,7 @@ pre .javascript .function {
 .post-body .figure .caption {
   margin: -20px auto 15px;
   text-align: center;
-  font-size: 15px;
+  font-size: 16px;
   color: #999;
   font-weight: bold;
   line-height: 1;
@@ -1943,7 +1943,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ff50ff;
+  background: #c85383;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2890,17 +2890,17 @@ hr {
 }
 .posts-expand .post-title {
   position: relative;
-  font-size: 26px;
+  font-size: 34px;
   font-weight: 400;
 }
 @media (max-width: 767px) {
   .posts-expand .post-title {
-    font-size: 24px;
+    font-size: 32px;
   }
 }
 @media (min-width: 1600px) {
   .posts-expand .post-title {
-    font-size: 28px;
+    font-size: 36px;
   }
 }
 .posts-expand .post-title:hover:before {
@@ -2908,7 +2908,7 @@ hr {
 }
 @media (max-width: 767px) {
   .posts-expand .post-body {
-    font-size: 13px;
+    font-size: 14px;
   }
 }
 .posts-expand .post-body img {
@@ -2934,7 +2934,7 @@ hr {
 }
 .post-button a {
   padding: 0;
-  font-size: 15px;
+  font-size: 16px;
   background: none;
   border: none;
   border-bottom: 2px solid #666;
@@ -2942,12 +2942,12 @@ hr {
 }
 @media (max-width: 767px) {
   .post-button a {
-    font-size: 13px;
+    font-size: 14px;
   }
 }
 @media (min-width: 1600px) {
   .post-button a {
-    font-size: 17px;
+    font-size: 18px;
   }
 }
 .post-button a:hover {
@@ -3022,4 +3022,10 @@ hr {
 }
 .post-toc ol {
   font-size: 13px;
+}
+.posts-expand h3 {
+  font-size: 28px;
+}
+.posts-expand h4 {
+  font-size: 20px;
 }
