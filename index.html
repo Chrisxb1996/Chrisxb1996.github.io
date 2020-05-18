@@ -131,9 +131,9 @@
 
 <meta name="description" content="🍃">
 <meta property="og:type" content="website">
-<meta property="og:title" content="xNotes">
+<meta property="og:title" content="xbsNotes">
 <meta property="og:url" content="https://chrisxb1996.github.io/index.html">
-<meta property="og:site_name" content="xNotes">
+<meta property="og:site_name" content="xbsNotes">
 <meta property="og:description" content="🍃">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="xNotes">
@@ -147,7 +147,7 @@
     root: '/',
     scheme: 'Mist',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"always","offset":10,"b2t":false,"scrollpercent":false,"onmobile":true},
+    sidebar: {"position":"left","display":"post","offset":10,"b2t":false,"scrollpercent":false,"onmobile":true},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -173,7 +173,7 @@
 
 
 
-  <title>xNotes</title>
+  <title>xbsNotes</title>
   <style>
    .forkme{
   display: none;
@@ -203,7 +203,7 @@
 
 
 
-<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="xNotes" type="application/atom+xml">
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="xbsNotes" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -227,7 +227,7 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">xNotes</span>
+        <span class="site-title">xbsNotes</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -377,7 +377,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="xNotes">
+      <meta itemprop="name" content="xbsNotes">
     </span>
 
     
@@ -460,28 +460,10 @@
 
       
         
-          <!-- toc -->
-
-<ul>
-<li><a href="#概述">概述</a><ul>
-<li><a href="#进程之间的通信">进程之间的通信:</a></li>
-<li><a href="#tcp和udp">TCP和UDP:</a></li>
-<li><a href="#传输层的端口">传输层的端口:</a></li>
-</ul>
-</li>
-<li><a href="#udp">UDP</a></li>
-<li><a href="#tcp">TCP</a><ul>
-<li><a href="#tcp概述">TCP概述：</a></li>
-<li><a href="#tcp报文首部格式">TCP报文首部格式：</a></li>
-<li><a href="#tcp可靠传输原理">TCP可靠传输原理：</a></li>
-<li><a href="#tcp滑动窗口">TCP滑动窗口：</a></li>
-<li><a href="#tcp流量控制">TCP流量控制</a></li>
-<li><a href="#tcp拥塞控制">TCP拥塞控制</a></li>
-<li><a href="#tcp链接管理">TCP链接管理</a></li>
-</ul>
-</li>
-</ul>
-<!-- tocstop -->
+          <h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><h4 id="进程之间的通信"><a href="#进程之间的通信" class="headerlink" title="进程之间的通信:"></a>进程之间的通信:</h4><ul>
+<li>网络层只把分组发送到目的主机，但是真正通信的并不是主机而是主机中的进程。传输层提供了进程间的逻辑通信，传输层向高层用户屏蔽了下面网络层的核心细节，使应用程序看起来像是在两个传输层实体之间有一条端到端的逻辑通信信道。</li>
+<li><strong>传输层向它上面的应用层提供通信服务，它属于面向通信部分的最高层，同时也是用户功能中的最低层。</strong></li>
+<li>当网络的边缘部分中的两个主机使用网络的核心部分的功能进行端到端的通信时，只有位于网络边缘部分的主机的协议栈才有运输层，而网络核心部分中的路由器在转发分组时都只用到下三层的功能。</li></ul>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2020/05/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E4%BC%A0%E8%BE%93%E5%B1%82/#more" rel="contents">
@@ -544,7 +526,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="xNotes">
+      <meta itemprop="name" content="xbsNotes">
     </span>
 
     
@@ -627,35 +609,10 @@
 
       
         
-          <!-- toc -->
-
-<ul>
-<li><a href="#概述">概述</a></li>
-<li><a href="#tcpip协议栈">TCP/IP协议栈</a></li>
-<li><a href="#ip地址编址">IP地址编址</a><ul>
-<li><a href="#点分十进制记法">点分十进制记法：</a></li>
-<li><a href="#分类">分类：</a></li>
-<li><a href="#划分子网">划分子网：</a></li>
-<li><a href="#构造超网无分类cidr">构造超网(无分类CIDR)：</a></li>
-<li><a href="#计算机a到b的通信过程">计算机A到B的通信过程：</a></li>
+          <h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><ul>
+<li>因为网络层是整个互联网的核心，因此应当让网络层尽可能简单。网络层向上只提供简单灵活的、无连接的、尽最大努力交互的数据报服务。使用 IP 协议，可以把异构的物理网络连接起来，使得在网络层看起来好像是一个统一的网络。</li>
 </ul>
-</li>
-<li><a href="#arp协议">ARP协议</a></li>
-<li><a href="#ip数据包">IP数据包</a></li>
-<li><a href="#ip转发分组">IP转发分组</a></li>
-<li><a href="#网际控制报文协议-icmp">网际控制报文协议 ICMP</a></li>
-<li><a href="#路由选择协议">路由选择协议</a><ul>
-<li><a href="#基本概念">基本概念：</a></li>
-<li><a href="#内部网关协议-rip">内部网关协议 RIP：</a></li>
-<li><a href="#内部网关协议-ospfopen-shortest-path-first">内部网关协议 OSPF(Open Shortest Path First)</a></li>
-<li><a href="#外部网关协议-bgp">外部网关协议 BGP</a></li>
-</ul>
-</li>
-<li><a href="#虚拟专用网vpn">虚拟专用网VPN</a></li>
-<li><a href="#网络地址转换nat">网络地址转换NAT</a></li>
-<li><a href="#internet组播管理协议-igmp">Internet组播管理协议 IGMP</a></li>
-</ul>
-<!-- tocstop -->
+<p><img src="/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%B1%82/虚拟互联网络.png" width="100%" height="100%"></p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%B1%82/#more" rel="contents">
@@ -718,7 +675,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="xNotes">
+      <meta itemprop="name" content="xbsNotes">
     </span>
 
     
@@ -801,33 +758,8 @@
 
       
         
-          <!-- toc -->
-
-<ul>
-<li><a href="#基本问题">基本问题</a><ul>
-<li><a href="#基本概念">基本概念：</a></li>
-<li><a href="#数据链路层的三个基本点">数据链路层的三个基本点：</a></li>
-</ul>
-</li>
-<li><a href="#数据链路层的信道类型">数据链路层的信道类型</a><ul>
-<li><a href="#点对点信道">点对点信道：</a></li>
-<li><a href="#广播信道">广播信道：</a></li>
-</ul>
-</li>
-<li><a href="#以太局域网">以太局域网</a><ul>
-<li><a href="#概述">概述：</a></li>
-<li><a href="#信道利用率">信道利用率：</a></li>
-<li><a href="#mac层数据链路层的子层">MAC层(数据链路层的子层)：</a></li>
-</ul>
-</li>
-<li><a href="#扩展以太网">扩展以太网</a><ul>
-<li><a href="#网桥淘汰">网桥(淘汰)：</a></li>
-<li><a href="#交换机">交换机：</a></li>
-<li><a href="#虚拟局域网vlan">虚拟局域网(VLAN):</a></li>
-</ul>
-</li>
-</ul>
-<!-- tocstop -->
+          <h3 id="基本问题"><a href="#基本问题" class="headerlink" title="基本问题"></a>基本问题</h3><h4 id="基本概念："><a href="#基本概念：" class="headerlink" title="基本概念："></a>基本概念：</h4><p>1.主机H1向H2发送数据：<br>层次上来看：<br><img src="/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/图片 1.png" width="100%" height="100%"><br>仅从数据链路层观察帧的流动：<br><img src="/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/图片 2.png" width="100%" height="100%"></p>
+<p><strong>注意：</strong>可以看到路由器只到网络层(三层协议)，没有应用层，和传输层；</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/#more" rel="contents">
@@ -890,7 +822,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="xNotes">
+      <meta itemprop="name" content="xbsNotes">
     </span>
 
     
@@ -1036,7 +968,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="xNotes">
+      <meta itemprop="name" content="xbsNotes">
     </span>
 
     
@@ -1182,7 +1114,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="xNotes">
+      <meta itemprop="name" content="xbsNotes">
     </span>
 
     
@@ -1328,7 +1260,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="xNotes">
+      <meta itemprop="name" content="xbsNotes">
     </span>
 
     
@@ -1411,7 +1343,9 @@
 
       
         
-          <p><strong>类加载的作用：</strong>将class文件字节码内容加载到内存中，并将这些静态数据转换成方法区中的运行时数据结构，在堆中生成一个代表这个类的java.lang.Class对象，作为方法区类数据的访问入口：<br><img src="/2020/05/13/JVM%E6%A0%B8%E5%BF%83%E6%9C%BA%E5%88%B6-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B/JVM01.png" width="80%" height="80%"></p>
+          <p><strong>类加载的作用：</strong>将class文件字节码内容加载到内存中，并将这些静态数据转换成方法区中的运行时数据结构，在堆中生成一个代表这个类的java.lang.Class对象，作为方法区类数据的访问入口：</p>
+<img src="/2020/05/13/JVM%E6%A0%B8%E5%BF%83%E6%9C%BA%E5%88%B6-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B/JVM01.png" width="80%" height="80%">
+
 <p><strong>类加载器的层次结构(树状结构):</strong></p>
 <ul>
 <li>引导类加载器（bootstrap class loader）：它用来加载 Java 的核心库)，是用C来实现的，并不继承自 java.lang.ClassLoader；</li></ul>
@@ -1477,7 +1411,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="xNotes">
+      <meta itemprop="name" content="xbsNotes">
     </span>
 
     
@@ -1625,7 +1559,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="xNotes">
+      <meta itemprop="name" content="xbsNotes">
     </span>
 
     
@@ -1771,7 +1705,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="xNotes">
+      <meta itemprop="name" content="xbsNotes">
     </span>
 
     
@@ -1899,8 +1833,9 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">&lt;i class&#x3D;&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">&gt;</a>
   </nav>
+
 
 
 

@@ -129,12 +129,12 @@
 
 
 
-<meta name="description" content="概述 TCP&#x2F;IP协议栈 IP地址编址 点分十进制记法： 分类： 划分子网： 构造超网(无分类CIDR)： 计算机A到B的通信过程：   ARP协议 IP数据包 IP转发分组 网际控制报文协议 ICMP 路由选择协议 基本概念： 内部网关协议 RIP： 内部网关协议 OSPF(Open Shortest Path First) 外部网关协议 BGP   虚拟专用网VPN 网络地址转换NAT">
+<meta name="description" content="概述 因为网络层是整个互联网的核心，因此应当让网络层尽可能简单。网络层向上只提供简单灵活的、无连接的、尽最大努力交互的数据报服务。使用 IP 协议，可以把异构的物理网络连接起来，使得在网络层看起来好像是一个统一的网络。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="网络层">
 <meta property="og:url" content="https://chrisxb1996.github.io/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%B1%82/index.html">
-<meta property="og:site_name" content="xNotes">
-<meta property="og:description" content="概述 TCP&#x2F;IP协议栈 IP地址编址 点分十进制记法： 分类： 划分子网： 构造超网(无分类CIDR)： 计算机A到B的通信过程：   ARP协议 IP数据包 IP转发分组 网际控制报文协议 ICMP 路由选择协议 基本概念： 内部网关协议 RIP： 内部网关协议 OSPF(Open Shortest Path First) 外部网关协议 BGP   虚拟专用网VPN 网络地址转换NAT">
+<meta property="og:site_name" content="xbsNotes">
+<meta property="og:description" content="概述 因为网络层是整个互联网的核心，因此应当让网络层尽可能简单。网络层向上只提供简单灵活的、无连接的、尽最大努力交互的数据报服务。使用 IP 协议，可以把异构的物理网络连接起来，使得在网络层看起来好像是一个统一的网络。">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://chrisxb1996.github.io/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%B1%82/%E8%99%9A%E6%8B%9F%E4%BA%92%E8%81%94%E7%BD%91%E7%BB%9C.png">
 <meta property="og:image" content="https://chrisxb1996.github.io/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%B1%82/%E5%8D%8F%E8%AE%AE%E6%A0%88.png">
@@ -151,7 +151,7 @@
 <meta property="og:image" content="https://chrisxb1996.github.io/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%B1%82/BGP%E5%8D%8F%E8%AE%AE.png">
 <meta property="og:image" content="https://chrisxb1996.github.io/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%B1%82/VPN.png">
 <meta property="article:published_time" content="2020-05-15T13:55:05.000Z">
-<meta property="article:modified_time" content="2020-05-17T08:00:48.262Z">
+<meta property="article:modified_time" content="2020-05-18T04:47:39.741Z">
 <meta property="article:author" content="xNotes">
 <meta property="article:tag" content="计算机网络">
 <meta property="article:tag" content="网络层">
@@ -166,7 +166,7 @@
     root: '/',
     scheme: 'Mist',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"always","offset":10,"b2t":false,"scrollpercent":false,"onmobile":true},
+    sidebar: {"position":"left","display":"post","offset":10,"b2t":false,"scrollpercent":false,"onmobile":true},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -192,7 +192,7 @@
 
 
 
-  <title>网络层 | xNotes</title>
+  <title>网络层 | xbsNotes</title>
   <style>
    .forkme{
   display: none;
@@ -222,7 +222,7 @@
 
 
 
-<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="xNotes" type="application/atom+xml">
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="xbsNotes" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -245,7 +245,7 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">xNotes</span>
+        <span class="site-title">xbsNotes</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -395,7 +395,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="xNotes">
+      <meta itemprop="name" content="xbsNotes">
     </span>
 
     
@@ -475,47 +475,15 @@
       
 
       
-        <!-- toc -->
-
-<ul>
-<li><a href="#概述">概述</a></li>
-<li><a href="#tcpip协议栈">TCP/IP协议栈</a></li>
-<li><a href="#ip地址编址">IP地址编址</a><ul>
-<li><a href="#点分十进制记法">点分十进制记法：</a></li>
-<li><a href="#分类">分类：</a></li>
-<li><a href="#划分子网">划分子网：</a></li>
-<li><a href="#构造超网无分类cidr">构造超网(无分类CIDR)：</a></li>
-<li><a href="#计算机a到b的通信过程">计算机A到B的通信过程：</a></li>
-</ul>
-</li>
-<li><a href="#arp协议">ARP协议</a></li>
-<li><a href="#ip数据包">IP数据包</a></li>
-<li><a href="#ip转发分组">IP转发分组</a></li>
-<li><a href="#网际控制报文协议-icmp">网际控制报文协议 ICMP</a></li>
-<li><a href="#路由选择协议">路由选择协议</a><ul>
-<li><a href="#基本概念">基本概念：</a></li>
-<li><a href="#内部网关协议-rip">内部网关协议 RIP：</a></li>
-<li><a href="#内部网关协议-ospfopen-shortest-path-first">内部网关协议 OSPF(Open Shortest Path First)</a></li>
-<li><a href="#外部网关协议-bgp">外部网关协议 BGP</a></li>
-</ul>
-</li>
-<li><a href="#虚拟专用网vpn">虚拟专用网VPN</a></li>
-<li><a href="#网络地址转换nat">网络地址转换NAT</a></li>
-<li><a href="#internet组播管理协议-igmp">Internet组播管理协议 IGMP</a></li>
-</ul>
-<!-- tocstop -->
-
-<a id="more"></a> 
-<h3><span id="概述">概述</span></h3><ul>
+        <h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><ul>
 <li>因为网络层是整个互联网的核心，因此应当让网络层尽可能简单。网络层向上只提供简单灵活的、无连接的、尽最大努力交互的数据报服务。使用 IP 协议，可以把异构的物理网络连接起来，使得在网络层看起来好像是一个统一的网络。</li>
 </ul>
-<img src="/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%B1%82/虚拟互联网络.png" width="100%" height="100%">
+<p><img src="/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%B1%82/虚拟互联网络.png" width="100%" height="100%"><a id="more"></a> </p>
+<h3 id="TCP-IP协议栈"><a href="#TCP-IP协议栈" class="headerlink" title="TCP/IP协议栈"></a>TCP/IP协议栈</h3><img src="/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%B1%82/协议栈.png" width="80%" height="80%">
 
-<h3><span id="tcpip协议栈">TCP/IP协议栈</span></h3><img src="/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%B1%82/协议栈.png" width="80%" height="80%">
+<h3 id="IP地址编址"><a href="#IP地址编址" class="headerlink" title="IP地址编址"></a>IP地址编址</h3><h4 id="点分十进制记法："><a href="#点分十进制记法：" class="headerlink" title="点分十进制记法："></a>点分十进制记法：</h4><img src="/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%B1%82/点分十进制记法.png" width="100%" height="100%">
 
-<h3><span id="ip地址编址">IP地址编址</span></h3><h4><span id="点分十进制记法">点分十进制记法：</span></h4><img src="/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%B1%82/点分十进制记法.png" width="100%" height="100%">
-
-<h4><span id="分类">分类：</span></h4><ul>
+<h4 id="分类："><a href="#分类：" class="headerlink" title="分类："></a>分类：</h4><ul>
 <li><p>由两部分组成，网络号和主机号，其中不同分类具有不同的网络号长度，并且是固定的。<br>IP 地址 ::= {&lt; 网络号 &gt;, &lt; 主机号 &gt;}</p>
 </li>
 <li><p>1-126：A类地址，127是本机地址；<br>128-191：B类地址；<br>192-223：C类地址；<br>224-240：D类地址；</p>
@@ -526,7 +494,7 @@
 <ul>
 <li><strong>特殊的几个地址：</strong><br>127.0.0.1   本地环回地址；<br>169.254.0.0   windows链接失败自动分配的地址；<br>10.0.0.0   保留的私网地址；<br>172.16.0.0   —   172.31.0.0   保留的私网地址；<br>192.168.0.0  —   192.168.255.0   保留的私网地址；</li>
 </ul>
-<h4><span id="划分子网">划分子网：</span></h4><ul>
+<h4 id="划分子网："><a href="#划分子网：" class="headerlink" title="划分子网："></a>划分子网：</h4><ul>
 <li><p>通过在<strong>主机号字段中拿一部分作为子网号</strong>，把两级 IP 地址划分为三级 IP 地址。划分子网纯属一个单位内部的事情。单位对外仍然表现为没有划分子网的网络。</p>
 </li>
 <li><p>IP 地址 ::= {&lt; 网络号 &gt;, &lt; 子网号 &gt;, &lt; 主机号 &gt;}</p>
@@ -537,7 +505,7 @@
 <p><strong>注意：</strong>外部网络看不到子网的存在。</p>
 <img src="/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%B1%82/子网划分.png" width="100%" height="100%">
 
-<h4><span id="构造超网无分类cidr">构造超网(无分类CIDR)：</span></h4><ul>
+<h4 id="构造超网-无分类CIDR-："><a href="#构造超网-无分类CIDR-：" class="headerlink" title="构造超网(无分类CIDR)："></a>构造超网(无分类CIDR)：</h4><ul>
 <li>CIDR 消除了传统的 A 类、B 类和 C 类地址以及划分子网的概念，因而可以更加有效地分配 IPv4 的地址空间。</li>
 <li>CIDR使用各种长度的“网络前缀”(network-prefix)来代替分类地址中的网络号和子网号。从三级编址（使用子网掩码）又回到了两级编址。</li>
 <li>IP地址 ::= {&lt;网络前缀&gt;, &lt;主机号&gt;}      </li>
@@ -545,9 +513,9 @@
 <li>CIDR 虽然不使用子网了，但仍然使用“掩码”这一名词（但不叫子网掩码）。</li>
 <li>在路由表中的项目由“网络前缀”和“下一跳地址”组成，在查找时可能会得到不止一个匹配结果，应当采用最长前缀匹配来确定应该匹配哪一个。</li>
 </ul>
-<h4><span id="计算机a到b的通信过程">计算机A到B的通信过程：</span></h4><img src="/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%B1%82/数据通信过程.png" width="100%" height="100%">
+<h4 id="计算机A到B的通信过程："><a href="#计算机A到B的通信过程：" class="headerlink" title="计算机A到B的通信过程："></a>计算机A到B的通信过程：</h4><img src="/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%B1%82/数据通信过程.png" width="100%" height="100%">
 
-<h3><span id="arp协议">ARP协议</span></h3><img src="/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%B1%82/ARP.png" width="100%" height="100%">
+<h3 id="ARP协议"><a href="#ARP协议" class="headerlink" title="ARP协议"></a>ARP协议</h3><img src="/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%B1%82/ARP.png" width="100%" height="100%">
 
 <ul>
 <li><p>不管网络层使用的是什么协议，在实际网络的链路上传送数据帧时，最终还是必须使用硬件地址。 </p>
@@ -560,7 +528,7 @@
 <img src="/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%B1%82/ARP请求过程.png" width="100%" height="100%">
 
 <p><strong>注意：</strong>ARP 是解决同一个局域网上的主机或路由器的 IP 地址和硬件地址的映射问题。如果所要找的主机和源主机不在同一个局域网上，那么就要通过 ARP 找到一个位于本局域网上的某个路由器的硬件地址，然后把分组发送给这个路由器，让这个路由器把分组转发给下一个网络。剩下的工作就由下一个网络来做。</p>
-<h3><span id="ip数据包">IP数据包</span></h3><ul>
+<h3 id="IP数据包"><a href="#IP数据包" class="headerlink" title="IP数据包"></a>IP数据包</h3><ul>
 <li>一个 IP 数据包由首部和数据两部分组成。</li>
 <li>首部的前一部分是固定长度，共 20 字节，是所有 IP 数据报必须具有的。</li>
 <li>在首部的固定部分的后面是一些可选字段，其长度是可变的。</li>
@@ -583,13 +551,13 @@
 <img src="/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%B1%82/IP数据报分片.png" width="100%" height="100%">
 
 <p><strong>注意：</strong>IP 首部的可变部分就是一个选项字段，用来支持排错、测量以及安全等措施，内容很丰富。选项字段的长度可变，从 1 个字节到 40 个字节不等，取决于所选择的项目。增加首部的可变部分是为了增加 IP 数据报的功能，但这同时也使得 IP 数据报的首部长度成为可变的。这就增加了每一个路由器处理数据报的开销。实际上这些选项很少被使用。 </p>
-<h3><span id="ip转发分组">IP转发分组</span></h3><ul>
+<h3 id="IP转发分组"><a href="#IP转发分组" class="headerlink" title="IP转发分组"></a>IP转发分组</h3><ul>
 <li>路由就是路由器从一个网段到另外一个网段转发数据包的过程，即数据包通过路由器转发，就是数据路由。</li>
 <li>网络畅通条件，要求数据包必须能够到达目标地址，同时数据包必须能够返回发送地址。(有去有回)</li>
 <li>这就要求沿途经过的路由器必须知道到目标网络如何转发数据包，即到达目的网络下一跳转发给哪个路由器，也就是必须有到达目标网络的路由，沿途的路由器还必须有数据包返回所需的路由。</li>
 </ul>
 <p><strong>注意：IP 数据报的首部中没有地方可以用来指明“下一跳路由器的 IP 地址”。当路由器收到待转发的数据报，不是将下一跳路由器的 IP 地址填入 IP 数据报，而是送交下层的网络接口软件。网络接口软件使用 ARP 负责将下一跳路由器的 IP 地址转换成硬件地址，并将此硬件地址放在链路层的 MAC 帧的首部，然后根据这个硬件地址找到下一跳路由器。</strong> </p>
-<h3><span id="网际控制报文协议-icmp">网际控制报文协议 ICMP</span></h3><ul>
+<h3 id="网际控制报文协议-ICMP"><a href="#网际控制报文协议-ICMP" class="headerlink" title="网际控制报文协议 ICMP"></a>网际控制报文协议 ICMP</h3><ul>
 <li>ICMP 是为了更有效地转发 IP 数据报和提高交付成功的机会。它封装在 IP 数据报中，ICMP 报文作为 IP 层数据报的数据，加上数据报的首部，组成 IP 数据报发送出去。ICMP 不是高层协议，而是 IP 层的协议。</li>
 <li>ICMP 报文的种类有两种，即 ICMP <strong>差错报告报文</strong>和 ICMP <strong>询问报文</strong>。</li>
 <li>ICMP 报文的前 4 个字节是统一的格式，共有三个字段：即<strong>类型</strong>、<strong>代码</strong>和<strong>检验和</strong>。接着的 4 个字节的内容与 ICMP 的类型有关。 </li>
@@ -605,7 +573,7 @@
 <li><strong>Ping：</strong>用来测试两个主机之间的连通性；是应用层直接使用网络层 ICMP 的例子，它没有通过运输层的 TCP 或UDP；</li>
 <li><strong>Traceroute：</strong> 是 ICMP 的另一个应用，用来跟踪一个分组从源点到终点的路径，发送的 IP 数据报封装的是无法交付的 UDP 用户数据报，并由目的主机发送终点不可达差错报告报文；</li>
 </ul>
-<h3><span id="路由选择协议">路由选择协议</span></h3><h4><span id="基本概念">基本概念：</span></h4><p>从路由算法的自适应性考虑可分为：静态路由选择策略和动态路由选择策略：</p>
+<h3 id="路由选择协议"><a href="#路由选择协议" class="headerlink" title="路由选择协议"></a>路由选择协议</h3><h4 id="基本概念："><a href="#基本概念：" class="headerlink" title="基本概念："></a>基本概念：</h4><p>从路由算法的自适应性考虑可分为：静态路由选择策略和动态路由选择策略：</p>
 <ul>
 <li>静态路由选择策略——即非自适应路由选择，其特点是简单和开销较小，但不能及时适应网络状态的变化。 </li>
 <li>动态路由选择策略——即自适应路由选择，其特点是能较好地适应网络状态的变化，但实现起来较为复杂，开销也比较大。 </li>
@@ -615,7 +583,7 @@
 <li><strong>自治系统内部的路由选择</strong>：RIP 和 OSPF；</li>
 <li><strong>自治系统间的路由选择</strong>：BGP</li>
 </ul>
-<h4><span id="内部网关协议-rip">内部网关协议 RIP：</span></h4><ul>
+<h4 id="内部网关协议-RIP："><a href="#内部网关协议-RIP：" class="headerlink" title="内部网关协议 RIP："></a>内部网关协议 RIP：</h4><ul>
 <li><p>RIP是一种分布式的基于<strong>距离</strong>向量的路由选择协议，RIP 协议中的<strong>距离</strong>即为<strong>跳数</strong>，RIP允许一条路径最多只能包含 15 个路由器。跳数的最大值为16 时相当于不可达。可见RIP只适用于小型互联网。</p>
 </li>
 <li><p>RIP协议的三个要点：<br>1.仅和相邻路由器交换信息；<br>2.交换的信息是当前本路由器所知道的全部信息，即自己的路由表；<br>3.按固定的时间间隔(30秒)交换路由信息；</p>
@@ -623,7 +591,7 @@
 <li><p>优缺点：<br><strong>优点：</strong>RIP 协议实现简单，开销小。<br><strong>缺点：</strong>但是 RIP 能使用的最大距离为 15，限制了网络的规模；并且当网络出现故障时，要经过比较长的时间才能将此消息传送到所有路由器；同时仅基于跳数选择最佳路由也不够合理；</p>
 </li>
 </ul>
-<h4><span id="内部网关协议-ospfopen-shortest-path-first">内部网关协议 OSPF(Open Shortest Path First)</span></h4><ul>
+<h4 id="内部网关协议-OSPF-Open-Shortest-Path-First"><a href="#内部网关协议-OSPF-Open-Shortest-Path-First" class="headerlink" title="内部网关协议 OSPF(Open Shortest Path First)"></a>内部网关协议 OSPF(Open Shortest Path First)</h4><ul>
 <li><p>基本特点：<br>1.“开放”表明 OSPF 协议不是受某一家厂商控制，而是公开发表的;<br>2.“最短路径优先”是因为使用了 Dijkstra 提出的最短路径算法SPF;</p>
 </li>
 <li><p>三个要点 :<br>1.向本自治系统中所有路由器发送信息，使用的方法是洪泛法。<br>2.发送的信息就是与本路由器相邻的所有路由器的链路状态，但这只是路由器所知道的部分信息。<br>3.只有当链路状态发生变化时，路由器才用洪泛法向所有路由器发送此信息。</p>
@@ -631,7 +599,7 @@
 <li><p>OSPF 能够用于规模很大的网，的更新过程收敛得快;</p>
 </li>
 </ul>
-<h4><span id="外部网关协议-bgp">外部网关协议 BGP</span></h4><p> BGP 是不同自治系统的路由器之间交换路由信息的协议。 </p>
+<h4 id="外部网关协议-BGP"><a href="#外部网关协议-BGP" class="headerlink" title="外部网关协议 BGP"></a>外部网关协议 BGP</h4><p> BGP 是不同自治系统的路由器之间交换路由信息的协议。 </p>
 <ul>
 <li>因特网的规模太大，使得自治系统之间路由选择非常困难；</li>
 <li>边界网关协议 BGP 只能是力求寻找一条能够到达目的网络且比较好的路由（不能兜圈子），而并非要寻找一条最佳路由；</li>
@@ -639,15 +607,15 @@
 <p><strong>每个 AS 都必须配置 BGP 发言人，通过在两个相邻 BGP 发言人之间建立 TCP 连接来交换路由信息。</strong></p>
 <img src="/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%B1%82/BGP协议.png" width="100%" height="100%">
 
-<h3><span id="虚拟专用网vpn">虚拟专用网VPN</span></h3><p>专用网段：<br>10.0.0.0 到 10.255.255.255<br>172.16.0.0 到 172.31.255.255<br>192.168.0.0 到 192.168.255.255</p>
+<h3 id="虚拟专用网VPN"><a href="#虚拟专用网VPN" class="headerlink" title="虚拟专用网VPN"></a>虚拟专用网VPN</h3><p>专用网段：<br>10.0.0.0 到 10.255.255.255<br>172.16.0.0 到 172.31.255.255<br>192.168.0.0 到 192.168.255.255</p>
 <p>这些地址只能用于一个机构的内部通信，而不能用于和因特网上的主机通信。</p>
 <p>下图中，场所 A 和 B 的通信经过互联网，如果场所 A 的主机 X 要和另一个场所 B 的主机 Y 通信，IP 数据报的源地址是 10.1.0.1，目的地址是 10.2.0.3。数据报先发送到与互联网相连的路由器 R1，R1 对内部数据进行加密，然后重新加上数据报的首部，源地址是路由器 R1 的全球地址 125.1.2.3，目的地址是路由器 R2 的全球地址 194.4.5.6。路由器 R2 收到数据报后将数据部分进行解密，恢复原来的数据报，此时目的地址为 10.2.0.3，就交付给 Y。</p>
 <img src="/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E5%B1%82/VPN.png" width="100%" height="100%">
 
-<h3><span id="网络地址转换nat">网络地址转换NAT</span></h3><p>需要在专用网连接到因特网的路由器上安装 NAT 软件。装有 NAT 软件的路由器叫做 NAT路由器，它至少有一个有效的外部全球地址 IP。</p>
+<h3 id="网络地址转换NAT"><a href="#网络地址转换NAT" class="headerlink" title="网络地址转换NAT"></a>网络地址转换NAT</h3><p>需要在专用网连接到因特网的路由器上安装 NAT 软件。装有 NAT 软件的路由器叫做 NAT路由器，它至少有一个有效的外部全球地址 IP。</p>
 <p>所有使用本地地址的主机在和外界通信时都要在 NAT 路由器上将其本地地址转换成 IP才能和因特网连。</p>
 <p>在以前，NAT 将本地 IP 和全球 IP 一一对应，这种方式下拥有 n 个全球 IP 地址的专用网内最多只可以同时有 n 台主机接入互联网。为了更有效地利用全球 IP 地址，现在常用的 NAT 转换表把传输层的端口号也用上了，<strong>使得多个专用网内部的主机共用一个全球 IP 地址</strong>。使用端口号的 NAT 也叫做网络地址与端口转换 NAPT。</p>
-<h3><span id="internet组播管理协议-igmp">Internet组播管理协议 IGMP</span></h3><ul>
+<h3 id="Internet组播管理协议-IGMP"><a href="#Internet组播管理协议-IGMP" class="headerlink" title="Internet组播管理协议 IGMP"></a>Internet组播管理协议 IGMP</h3><ul>
 <li>当某个主机加入新的多播组时，该主机应向多播组的多播地址发送IGMP 报文，声明自己要成为该组的成员。本地的多播路由器收到 IGMP 报文后，将组成员关系转发给因特网上的其他多播路由器。</li>
 <li>因为组成员关系是动态的，因此本地多播路由器要周期性地探询本地局域网上的主机，以便知道这些主机是否还继续是组的成员。</li>
 </ul>
@@ -783,8 +751,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -870,6 +847,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP-IP协议栈"><span class="nav-number">2.</span> <span class="nav-text">TCP&#x2F;IP协议栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IP地址编址"><span class="nav-number">3.</span> <span class="nav-text">IP地址编址</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#点分十进制记法："><span class="nav-number">3.1.</span> <span class="nav-text">点分十进制记法：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分类："><span class="nav-number">3.2.</span> <span class="nav-text">分类：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#划分子网："><span class="nav-number">3.3.</span> <span class="nav-text">划分子网：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#构造超网-无分类CIDR-："><span class="nav-number">3.4.</span> <span class="nav-text">构造超网(无分类CIDR)：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#计算机A到B的通信过程："><span class="nav-number">3.5.</span> <span class="nav-text">计算机A到B的通信过程：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ARP协议"><span class="nav-number">4.</span> <span class="nav-text">ARP协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IP数据包"><span class="nav-number">5.</span> <span class="nav-text">IP数据包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IP转发分组"><span class="nav-number">6.</span> <span class="nav-text">IP转发分组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网际控制报文协议-ICMP"><span class="nav-number">7.</span> <span class="nav-text">网际控制报文协议 ICMP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#路由选择协议"><span class="nav-number">8.</span> <span class="nav-text">路由选择协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本概念："><span class="nav-number">8.1.</span> <span class="nav-text">基本概念：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#内部网关协议-RIP："><span class="nav-number">8.2.</span> <span class="nav-text">内部网关协议 RIP：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#内部网关协议-OSPF-Open-Shortest-Path-First"><span class="nav-number">8.3.</span> <span class="nav-text">内部网关协议 OSPF(Open Shortest Path First)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#外部网关协议-BGP"><span class="nav-number">8.4.</span> <span class="nav-text">外部网关协议 BGP</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#虚拟专用网VPN"><span class="nav-number">9.</span> <span class="nav-text">虚拟专用网VPN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络地址转换NAT"><span class="nav-number">10.</span> <span class="nav-text">网络地址转换NAT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Internet组播管理协议-IGMP"><span class="nav-number">11.</span> <span class="nav-text">Internet组播管理协议 IGMP</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
