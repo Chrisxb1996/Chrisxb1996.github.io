@@ -80,17 +80,11 @@
   
 
   
-    
-      
-    
-
-    
-  
 
   
     
     
-    <link href="//fonts.googleapis.com/css?family=Courgette:300,300italic,400,400italic,700,700italic|Ma Shan Zheng:300,300italic,400,400italic,700,700italic|Noto Serif:300,300italic,400,400italic,700,700italic|Averia Sans Libre:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Courgette:300,300italic,400,400italic,700,700italic|Ma Shan Zheng:300,300italic,400,400italic,700,700italic|Noto Serif:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
   
 
 
@@ -118,7 +112,7 @@
 
 
 
-  <meta name="keywords" content="Java,设计模式,单例模式," />
+  <meta name="keywords" content="Java,设计模式,模版方法模式," />
 
 
 
@@ -129,19 +123,19 @@
 
 
 
-<meta name="description" content="核心作用：保证一个类只有一个实例，并且提供一个访问该实例的全局访问点,减少了系统性能开销。常见应用场景：Windows的任务管理器就是很典型的单例模式；数据库连接池的设计一般也是采用单例模式…常见的五种单例模式实现方式：  1.饿汉式：线程安全，调用效率高。 但是，不能延时加载；  2.懒汉式：线程安全，调用效率不高，可以延时加载；  3.静态内部类式：线程安全，调用效率高，可以延时加载；">
+<meta name="description" content="模板方法模式也叫方法回调或钩子方法，是编程中经常用得到模式。它定义了一个操作中的算法骨架，将某些步骤延迟到子类中实现。这样，新的子类可以在不改变一个算法结构的前提下重新定义该算法的某些特定步骤。 核心：处理步骤父类中定义好，具体实现延迟到子类中定义。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="设计模式-单例模式">
-<meta property="og:url" content="https://chrisxb1996.github.io/2020/05/13/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/index.html">
+<meta property="og:title" content="设计模式-模版方法模式">
+<meta property="og:url" content="https://chrisxb1996.github.io/2020/05/20/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E6%A8%A1%E7%89%88%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F/index.html">
 <meta property="og:site_name" content="xbsNotes">
-<meta property="og:description" content="核心作用：保证一个类只有一个实例，并且提供一个访问该实例的全局访问点,减少了系统性能开销。常见应用场景：Windows的任务管理器就是很典型的单例模式；数据库连接池的设计一般也是采用单例模式…常见的五种单例模式实现方式：  1.饿汉式：线程安全，调用效率高。 但是，不能延时加载；  2.懒汉式：线程安全，调用效率不高，可以延时加载；  3.静态内部类式：线程安全，调用效率高，可以延时加载；">
+<meta property="og:description" content="模板方法模式也叫方法回调或钩子方法，是编程中经常用得到模式。它定义了一个操作中的算法骨架，将某些步骤延迟到子类中实现。这样，新的子类可以在不改变一个算法结构的前提下重新定义该算法的某些特定步骤。 核心：处理步骤父类中定义好，具体实现延迟到子类中定义。">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-05-13T09:12:28.000Z">
-<meta property="article:modified_time" content="2020-05-14T13:07:29.495Z">
+<meta property="article:published_time" content="2020-05-20T14:22:50.000Z">
+<meta property="article:modified_time" content="2020-05-20T14:46:48.091Z">
 <meta property="article:author" content="xNotes">
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="设计模式">
-<meta property="article:tag" content="单例模式">
+<meta property="article:tag" content="模版方法模式">
 <meta name="twitter:card" content="summary">
 
 
@@ -172,13 +166,13 @@
 
 
 
-  <link rel="canonical" href="https://chrisxb1996.github.io/2020/05/13/设计模式-单例模式/"/>
+  <link rel="canonical" href="https://chrisxb1996.github.io/2020/05/20/设计模式/设计模式-模版方法模式/"/>
 
 
 
 
 
-  <title>设计模式-单例模式 | xbsNotes</title>
+  <title>设计模式-模版方法模式 | xbsNotes</title>
   <style>
    .forkme{
   display: none;
@@ -372,7 +366,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://chrisxb1996.github.io/2020/05/13/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/">
+    <link itemprop="mainEntityOfPage" href="https://chrisxb1996.github.io/2020/05/20/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E6%A8%A1%E7%89%88%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xNotes">
@@ -389,7 +383,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">设计模式-单例模式</h1>
+          <h1 class="post-title" itemprop="name headline">设计模式-模版方法模式</h1>
         
 
         <div class="post-meta">
@@ -401,8 +395,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-05-13T17:12:28+08:00">
-                2020-05-13
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-05-20T22:22:50+08:00">
+                2020-05-20
               </time>
             
 
@@ -461,16 +455,14 @@
       
 
       
-        <p><strong>核心作用：</strong>保证一个类只有一个实例，并且提供一个访问该实例的全局访问点,减少了系统性能开销。<br><strong>常见应用场景：</strong>Windows的任务管理器就是很典型的单例模式；数据库连接池的设计一般也是采用单例模式…<br><strong>常见的五种单例模式实现方式：</strong><br>  1.饿汉式：线程安全，调用效率高。 但是，不能延时加载；<br>  2.懒汉式：线程安全，调用效率不高，可以延时加载；<br>  3.静态内部类式：线程安全，调用效率高，可以延时加载；<a id="more"></a><br>  4.枚举式：线程安全，调用效率高，不能延时加载。并且可以天然的防止反射和反序列化创建对象的漏洞！<br>  5.<del>双重检测锁式</del>：JVM底层内部模型原因，偶尔会出问题。<strong>不建议使用；</strong></p>
-<p>饿汉式：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//饿汉式：</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SingletonDemo01</span> </span>&#123;</span><br><span class="line">    <span class="comment">//类初始化时，上来先创建对象（没有延时加载的优势），加载类时，天然线程安全</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> SingletonDemo01 instance = <span class="keyword">new</span> SingletonDemo01();</span><br><span class="line">    <span class="comment">//构造器私有</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span>  <span class="title">SingletonDemo01</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    <span class="comment">//优点：方法没有同步调用效率高</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> SingletonDemo01 <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span>  instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>懒汉式：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//懒汉式：</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SingletonDemo02</span> </span>&#123;</span><br><span class="line">    <span class="comment">//类初始化时，不创建对象（延时加载，真正用的时候再创建）</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> SingletonDemo02 instance;</span><br><span class="line">    <span class="comment">//构造器私有</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">SingletonDemo02</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    <span class="comment">//需要加同步，保证单例模式，效率较低</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> SingletonDemo02 <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(instance == <span class="keyword">null</span>) instance = <span class="keyword">new</span> SingletonDemo02();</span><br><span class="line">        <span class="keyword">return</span>  instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>静态内部类式:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//静态内部类方式：线程安全，调用效率高，实现延时加载</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SingletonDemo03</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">SingletonInnerClass</span></span>&#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> SingletonDemo03 instance = <span class="keyword">new</span> SingletonDemo03();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//构造器私有</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">SingletonDemo03</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    <span class="comment">//优点：方法没有同步调用效率高</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> SingletonDemo03 <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span>  SingletonInnerClass.instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>枚举式:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//枚举类方式：线程安全，但没有延时加载；同时能够避免反射和反序列的漏洞</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> SingletonDemo04 &#123;</span><br><span class="line">    INSTANCE;</span><br><span class="line">    <span class="comment">//可以自己添加一些操作方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">instanceOper</span><span class="params">()</span></span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>如何选用合适的单例模式：</strong><br>单例对象占用资源少，不需要延时加载：枚举式 &gt; 饿汉式;<br>单例对象占用资源大，需要 延时加载：静态内部类式 &gt; 懒汉式;</p>
+        <p>模板方法模式也叫方法回调或钩子方法，是编程中经常用得到模式。它定义了一个操作中的算法骨架，将某些步骤延迟到子类中实现。这样，新的子类可以在不改变一个算法结构的前提下重新定义该算法的某些特定步骤。</p>
+<p><strong>核心：</strong>处理步骤父类中定义好，具体实现延迟到子类中定义。<a id="more"></a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">BankTemplateMethod</span> </span>&#123;</span><br><span class="line">    <span class="comment">//具体方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">takeNumber</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"取号排队"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">transact</span><span class="params">()</span></span>; <span class="comment">//办理具体的业务	//钩子方法</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">evaluate</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"反馈评分"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">process</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.takeNumber();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">this</span>.transact();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">this</span>.evaluate();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//采用匿名内部类</span></span><br><span class="line">        BankTemplateMethod btm = <span class="keyword">new</span> BankTemplateMethod()&#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">transact</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                System.out.println(<span class="string">"取钱：2000！！！"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        btm.process();</span><br><span class="line"></span><br><span class="line">        BankTemplateMethod btm2 = <span class="keyword">new</span> BankTemplateMethod()&#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">transact</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                System.out.println(<span class="string">"我要存钱：2000000！！！"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        btm2.process();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>•  什么时候用到模板方法模式：</strong>实现一个算法时，整体步骤很固定。但是，某些部分易变。易变部分可以抽象成出来，供子类实现。</p>
+<p><strong>•  开发中常见的场景：</strong>非常频繁。各个框架、类库中都有他的影子。比如常见的有：<br>1.数据库访问的封装；<br>2.Junit单元测试；<br>3.servlet中关于doGet/doPost方法调用；<br>4.Hibernate中模板程序；<br>5.spring中JDBCTemplate、HibernateTemplate等；</p>
 
       
     </div>
@@ -521,7 +513,7 @@
           
             <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag"><i class="fa fa-tag"></i> 设计模式</a>
           
-            <a href="/tags/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" rel="tag"><i class="fa fa-tag"></i> 单例模式</a>
+            <a href="/tags/%E6%A8%A1%E7%89%88%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F/" rel="tag"><i class="fa fa-tag"></i> 模版方法模式</a>
           
         </div>
       
@@ -534,8 +526,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/05/13/JVM%E6%A0%B8%E5%BF%83%E6%9C%BA%E5%88%B6-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B/" rel="next" title="JVM核心机制-类加载过程">
-                <i class="fa fa-chevron-left"></i> JVM核心机制-类加载过程
+              <a href="/2020/05/20/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/" rel="next" title="设计模式-策略模式">
+                <i class="fa fa-chevron-left"></i> 设计模式-策略模式
               </a>
             
           </div>
@@ -544,8 +536,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/05/14/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/" rel="prev" title="设计模式-工厂模式">
-                设计模式-工厂模式 <i class="fa fa-chevron-right"></i>
+              <a href="/2020/05/21/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/" rel="prev" title="设计模式-观察者模式">
+                设计模式-观察者模式 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -625,7 +617,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -636,7 +628,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -647,7 +639,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
