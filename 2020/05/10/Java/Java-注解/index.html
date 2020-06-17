@@ -112,7 +112,7 @@
 
 
 
-  <meta name="keywords" content="Java,JVM," />
+  <meta name="keywords" content="Java,annotation," />
 
 
 
@@ -123,22 +123,19 @@
 
 
 
-<meta name="description" content="类加载的作用：将class文件字节码内容加载到内存中，并将这些静态数据转换成方法区中的运行时数据结构，在堆中生成一个代表这个类的java.lang.Class对象，作为方法区类数据的访问入口：   类加载器的层次结构(树状结构):  引导类加载器（bootstrap class loader）：它用来加载 Java 的核心库)，是用C来实现的，并不继承自 java.lang.ClassLoader">
+<meta name="description" content="Annotation的作用：1.不是程序本身，可以对程序作出解释。(这一点，跟注释没什么区别)2.可以被其他程序(比如：编译器，其他类(通过反射))读取。(注解信息处理流程，是注解和注释的重大区别如果没有注解信息处理流程，则注解毫无意义)Annotation的格式：注解是以“@注释名”在代码中存在的，还可以添加一些参数值，例如:@SuppressWarnings(value&#x3D;”unchecked”">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JVM核心机制-类加载过程">
-<meta property="og:url" content="https://chrisxb1996.github.io/2020/05/13/JVM%E6%A0%B8%E5%BF%83%E6%9C%BA%E5%88%B6-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B/index.html">
+<meta property="og:title" content="Java 注解">
+<meta property="og:url" content="https://chrisxb1996.github.io/2020/05/10/Java/Java-%E6%B3%A8%E8%A7%A3/index.html">
 <meta property="og:site_name" content="xbsNotes">
-<meta property="og:description" content="类加载的作用：将class文件字节码内容加载到内存中，并将这些静态数据转换成方法区中的运行时数据结构，在堆中生成一个代表这个类的java.lang.Class对象，作为方法区类数据的访问入口：   类加载器的层次结构(树状结构):  引导类加载器（bootstrap class loader）：它用来加载 Java 的核心库)，是用C来实现的，并不继承自 java.lang.ClassLoader">
+<meta property="og:description" content="Annotation的作用：1.不是程序本身，可以对程序作出解释。(这一点，跟注释没什么区别)2.可以被其他程序(比如：编译器，其他类(通过反射))读取。(注解信息处理流程，是注解和注释的重大区别如果没有注解信息处理流程，则注解毫无意义)Annotation的格式：注解是以“@注释名”在代码中存在的，还可以添加一些参数值，例如:@SuppressWarnings(value&#x3D;”unchecked”">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://chrisxb1996.github.io/2020/05/13/JVM%E6%A0%B8%E5%BF%83%E6%9C%BA%E5%88%B6-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B/JVM01.png">
-<meta property="og:image" content="https://chrisxb1996.github.io/2020/05/13/JVM%E6%A0%B8%E5%BF%83%E6%9C%BA%E5%88%B6-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B/JVM02.png">
-<meta property="article:published_time" content="2020-05-13T06:38:30.000Z">
-<meta property="article:modified_time" content="2020-05-18T04:49:14.599Z">
+<meta property="article:published_time" content="2020-05-10T03:56:57.000Z">
+<meta property="article:modified_time" content="2020-05-14T03:16:59.928Z">
 <meta property="article:author" content="xNotes">
 <meta property="article:tag" content="Java">
-<meta property="article:tag" content="JVM">
+<meta property="article:tag" content="annotation">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://chrisxb1996.github.io/2020/05/13/JVM%E6%A0%B8%E5%BF%83%E6%9C%BA%E5%88%B6-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B/JVM01.png">
 
 
 
@@ -168,13 +165,13 @@
 
 
 
-  <link rel="canonical" href="https://chrisxb1996.github.io/2020/05/13/JVM核心机制-类加载过程/"/>
+  <link rel="canonical" href="https://chrisxb1996.github.io/2020/05/10/Java/Java-注解/"/>
 
 
 
 
 
-  <title>JVM核心机制-类加载过程 | xbsNotes</title>
+  <title>Java 注解 | xbsNotes</title>
   <style>
    .forkme{
   display: none;
@@ -368,7 +365,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://chrisxb1996.github.io/2020/05/13/JVM%E6%A0%B8%E5%BF%83%E6%9C%BA%E5%88%B6-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B/">
+    <link itemprop="mainEntityOfPage" href="https://chrisxb1996.github.io/2020/05/10/Java/Java-%E6%B3%A8%E8%A7%A3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xNotes">
@@ -385,7 +382,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">JVM核心机制-类加载过程</h1>
+          <h1 class="post-title" itemprop="name headline">Java 注解</h1>
         
 
         <div class="post-meta">
@@ -397,8 +394,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-05-13T14:38:30+08:00">
-                2020-05-13
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-05-10T11:56:57+08:00">
+                2020-05-10
               </time>
             
 
@@ -457,27 +454,24 @@
       
 
       
-        <p><strong>类加载的作用：</strong>将class文件字节码内容加载到内存中，并将这些静态数据转换成方法区中的运行时数据结构，在堆中生成一个代表这个类的java.lang.Class对象，作为方法区类数据的访问入口：</p>
-<img src="/2020/05/13/JVM%E6%A0%B8%E5%BF%83%E6%9C%BA%E5%88%B6-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B/JVM01.png" width="80%" height="80%">
-
-<p><strong>类加载器的层次结构(树状结构):</strong></p>
+        <p><strong>Annotation的作用：</strong><br>1.不是程序本身，可以对程序作出解释。(这一点，跟注释没什么区别)<br>2.可以被其他程序(比如：编译器，其他类(通过反射))读取。(注解信息处理流程，是注解和注释的重大区别如果没有注解信息处理流程，则注解毫无意义)<br><strong>Annotation的格式：</strong><br>注解是以“@注释名”在代码中存在的，还可以添加一些参数值，例如:<br>@SuppressWarnings(value=”unchecked”)。(抑制警告)<br><strong>Annotation在哪里使用：</strong><br>可以附加在package, class, method, field等上面，相当于给它们添加了额外的辅助信息，我们可以通过反射机制编程实现对这些元数据的访问。<a id="more"></a><br><strong>自定义注解：</strong><br>格式：public @interface 注解名 {定义体}<br>1.方法的名称就是参数的名称;<br>2.返回值类型就是参数的类型（返回值类型只能是基本类型、Class、String、enum）;<br>3.可以通过default来声明参数的默认值<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>;<br>4.如果只有一个参数成员，一般参数名为value;<br><strong>元注解：</strong><br>元注解的作用就是负责注解其他注解。 Java定义了4个标准的meta-annotation类型，它们被用来提供对其它 annotation类型作说明。<br>1.@Target：用于描述注解的使用范围（即:被描述的注解可以用在什么地方）<br>ElementType.TYPE；ElementType.FIELD…<br>2.@Retention：表示需要在什么级别保存该注释信息，用于描述注解的生命周期<br>SOURCE；CLASS；RUNTIME(可被反射机制读取)<br>3.@Documented<br>4.@Inherited<br><strong>通过反射读取注解的流程：</strong></p>
 <ul>
-<li>引导类加载器（bootstrap class loader）：它用来加载 Java 的核心库)，是用C来实现的，并不继承自 java.lang.ClassLoader；<a id="more"></a></li>
-<li>扩展类加载器（extensions class loader）：用来加载 Java 的扩展库，Java 虚拟机的实现会提供一个<strong>扩展库</strong>目录。该类加载器在此目录里面查找并加载 Java类，由ExtClassLoader实现；</li>
-<li>应用程序类加载器（application class loader）：它根据 Java 应用的类路径来加载 Java 类，一般来说，Java 应用的类都是由它来完成加载的，由AppClassLoader实现；</li>
-<li>自定义类加载器： 开发人员可以通过继承 java.lang.ClassLoader类的方式，实现自己的类加载器，以满足一些特殊的需求。</li>
+<li>自定义类注解：</li>
 </ul>
-<p>注意：<u>类加载器加载类的时候是线程安全的</u></p>
-<img src="/2020/05/13/JVM%E6%A0%B8%E5%BF%83%E6%9C%BA%E5%88%B6-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B/JVM02.png" width="80%" height="80%">
-
-<p><strong>双亲委托机制：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Target</span>(value = &#123;ElementType.TYPE&#125;)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> test01Table &#123;</span><br><span class="line">    <span class="function">String <span class="title">value</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
-<li>就是某个特定的类加载器在接到加载类的请求时，首先将加载任务委托给父类加载器，依次追溯，直到最高的爷爷辈的，如果父类加载器可以完成类加载任务，就成功返回；只有父类加载器无法完成此加载任务时，才自己去加载。</li>
-<li>双亲委托机制是为了保证 Java 核心库的类型安全，这种机制就保证不会出现用户自己能定义java.lang.Object类的情况。</li>
-<li>类加载器除了用于加载类，也是安全的最基本的屏障。</li>
-<li>双亲委托机制是代理模式的一种，但并不是所有的类加载器都采用双亲委托机制：tomcat服务器类加载器也使用代理模式，所不同的是它是首先尝试去加载某个类，如果找不到再代理给父类加载器，这与一般类加载器的顺序是相反的。</li>
+<li>自定义属性注解：</li>
 </ul>
-
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Target</span>(value = &#123;ElementType.FIELD&#125;)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> test01Field &#123;</span><br><span class="line">    <span class="function">String <span class="title">columnName</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function">String <span class="title">type</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">length</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在test01中加入注解：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@test</span>01Table(<span class="string">"tb_member"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">test01</span> </span>&#123;</span><br><span class="line">    <span class="meta">@test</span>01Field(columnName = <span class="string">"id"</span>, type = <span class="string">"int"</span>, length = <span class="number">10</span>)</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line">    <span class="meta">@test</span>01Field(columnName = <span class="string">"sname"</span>, type = <span class="string">"varchar"</span>, length = <span class="number">10</span>)</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="meta">@test</span>01Field(columnName = <span class="string">"age"</span>, type = <span class="string">"int"</span>, length = <span class="number">3</span>)</span><br><span class="line">    <span class="keyword">private</span>  <span class="keyword">int</span> age;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>读取test01中的注解：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 通过反射读取自定义注解</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ReadAnnotation</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Class clazz = Class.forName(<span class="string">"com.sgg.annotation.test01"</span>);</span><br><span class="line">            <span class="comment">//获得类的有效注解</span></span><br><span class="line">            Annotation[] annotations = clazz.getAnnotations();</span><br><span class="line">            <span class="keyword">for</span>(Annotation a : annotations)&#123;</span><br><span class="line">                System.out.println(a);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">//获得类的制定注解</span></span><br><span class="line">            test01Table tt = (test01Table)clazz.getAnnotation(test01Table<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">            System.out.println(tt.value());</span><br><span class="line"></span><br><span class="line">            <span class="comment">//获得类的属性的对应注解</span></span><br><span class="line">            Field f = clazz.getDeclaredField(<span class="string">"id"</span>);</span><br><span class="line">            test01Field tf = (test01Field)f.getAnnotation(test01Field<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">            System.out.println(tf.columnName() +<span class="string">"--"</span>+ tf.type() +<span class="string">"--"</span>+ tf.length());</span><br><span class="line"></span><br><span class="line">            <span class="comment">//接下来可以利用注解信息写出DDL语句，完成相应的数据库操作</span></span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<div id="footnotes"><hr><div id="footnotelist"><ol style="list-style:none; padding-left: 0;"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">1.</span><span style="display: inline-block; vertical-align: top;">注解元素必须要有值。我们定义注解元素时，经常使用空字符串、0作为默认值。也经常使用负数(比如：-1)表示不存在的含义</span><a href="#fnref:1" rev="footnote"> ↩</a></li></ol></div></div>
       
     </div>
     
@@ -525,7 +519,7 @@
           
             <a href="/tags/Java/" rel="tag"><i class="fa fa-tag"></i> Java</a>
           
-            <a href="/tags/JVM/" rel="tag"><i class="fa fa-tag"></i> JVM</a>
+            <a href="/tags/annotation/" rel="tag"><i class="fa fa-tag"></i> annotation</a>
           
         </div>
       
@@ -538,8 +532,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/05/12/Java-%E5%8A%A8%E6%80%81%E7%BC%96%E8%AF%91/" rel="next" title="Java 动态编译">
-                <i class="fa fa-chevron-left"></i> Java 动态编译
+              <a href="/2020/05/09/%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" rel="next" title="用hexo搭建个人博客">
+                <i class="fa fa-chevron-left"></i> 用hexo搭建个人博客
               </a>
             
           </div>
@@ -548,8 +542,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/05/13/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" rel="prev" title="设计模式-单例模式">
-                设计模式-单例模式 <i class="fa fa-chevron-right"></i>
+              <a href="/2020/05/11/Java/Java-%E5%8F%8D%E5%B0%84/" rel="prev" title="Java 反射">
+                Java 反射 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -629,7 +623,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
