@@ -132,7 +132,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://chrisxb1996.github.io/2020/06/07/%E5%89%91%E6%8C%87offer/%E5%89%91%E6%8C%87offer-%E7%AE%80%E5%8D%95%E7%AF%87/%E5%8F%8C%E6%A0%88.png">
 <meta property="article:published_time" content="2020-06-07T09:02:50.000Z">
-<meta property="article:modified_time" content="2020-06-12T11:18:20.366Z">
+<meta property="article:modified_time" content="2020-06-19T15:09:11.172Z">
 <meta property="article:author" content="xNotes">
 <meta property="article:tag" content="剑指offer">
 <meta property="article:tag" content="数据结构和算法">
@@ -472,6 +472,10 @@
 
 <br>
 
+
+
+
+
 <h4 id="二叉树的深度"><a href="#二叉树的深度" class="headerlink" title="二叉树的深度"></a>二叉树的深度</h4><p><strong>题目描述：</strong>输入一棵二叉树，求该树的深度。从根结点到叶结点依次经过的结点（含根、叶结点）形成树的一条路径，最长路径的长度为树的深度。</p>
 <p><u>思路</u>：递归：结束条件：根节点位空</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">TreeDepth</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(root == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">int</span> left = TreeDepth(root.left);</span><br><span class="line">  <span class="keyword">int</span> right = TreeDepth(root.right);</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> Math.max(left,right)+<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -509,7 +513,7 @@
 <br>
 
 <h4 id="用两个栈实现队列"><a href="#用两个栈实现队列" class="headerlink" title="用两个栈实现队列"></a>用两个栈实现队列</h4><p><strong>题目描述：</strong>用两个栈来实现一个队列，完成队列的Push和Pop操作。 队列中的元素为int类型。</p>
-<p><u>思路</u>：<strong>注意：</strong>stack2中有元素时，不能入栈，直接pop出元素即可；<br>                         必须stack2为空时，才能入栈；</p>
+<p><u>思路</u>：<strong>注意：</strong>stack2中有元素时，不能入栈，直接pop出元素即可；<br>                        必须stack2为空时，才能入栈；</p>
 <p><img src="/2020/06/07/%E5%89%91%E6%8C%87offer/%E5%89%91%E6%8C%87offer-%E7%AE%80%E5%8D%95%E7%AF%87/%E5%8F%8C%E6%A0%88.png" alt="双栈"></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">  Stack&lt;Integer&gt; stack1 = <span class="keyword">new</span> Stack&lt;Integer&gt;();</span><br><span class="line">  Stack&lt;Integer&gt; stack2 = <span class="keyword">new</span> Stack&lt;Integer&gt;();</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> node)</span> </span>&#123;</span><br><span class="line">    stack1.push(node);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">pop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(stack2.isEmpty())&#123;</span><br><span class="line">      <span class="keyword">while</span>(!stack1.isEmpty())&#123;</span><br><span class="line">        <span class="keyword">int</span> node = stack1.pop();</span><br><span class="line">      	stack2.push(node);</span><br><span class="line">      &#125; </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> stack2.pop();   </span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
